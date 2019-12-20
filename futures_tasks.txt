@@ -9,87 +9,178 @@
 <body>
     <script>
           "L1 - Ads Conversion Code by GTM";
-         "♦  GTM account was created and code was inserted in the website.  ♦ Conversion was created in Ads.  ♦ Tag was created for Form Submit.  Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.";
+         "
+  GTM account was created and code was inserted in the website.  
+ Conversion was created in Ads.         
+ Tag was created for Form Submit.  Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.";
     
 
           "L1 - Ads Conversion Code by Code";
-         "♦ The Gtag.js was inserted. ♦ Conversion was created in Ads. ♦ I sent a event code for Form Submit.  ♦ Tested with advertiser in Analytics Real Time and Tag Assistant extension.";
+         "
+ The Gtag.js was inserted.    
+ Conversion was created in Ads.       
+ I sent a event code for Form Submit.          
+ Tested with advertiser in Analytics Real Time and Tag Assistant extension.";
     
 
           "L1 - Ads Event Tracking by GTM";
-         "♦ GTM account was created and code was inserted in the website.  ♦ Conversion was created in Ads.  ♦ Tag was created for Form Submit. ♦ Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.";
+         "
+ GTM account was created and code was inserted in the website.  
+ Conversion was created in Ads.  
+ Tag was created for Form Submit. 
+ Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.";
 
           "L1 - Ads Event Tracking by Code";
-         "♦ The Gtag.js was inserted♦ Conversion was created in Ads. ♦ I sent a event code for Form Submit. ♦ Tested with advertiser in Analytics Real Time and Tag Assistant extension.";
+         "
+ The Gtag.js was inserted
+ Conversion was created in Ads. 
+ I sent a event code for Form Submit. 
+ Tested with advertiser in Analytics Real Time and Tag Assistant extension.";
     
           "L1 - Ads Remarketing by GTM";
-         "♦ GTM account was created and code was inserted in the website.  Created the tag for Google Ads Remarketing in GTM.  ♦ Tested in Tag Assistant Chrome Exension.";
+         "
+ GTM account was created and code was inserted in the website.  Created the tag for Google Ads Remarketing in GTM.  
+ Tested in Tag Assistant Chrome Exension.";
 
           "L1 - Ads Remarketing by Code";
-         "♦ The Gtag.js with Costumer Ads ID was inserted in the website.  ♦ Tested in Tag Assistant Chrome Exension.";
+         "
+ The Gtag.js with Costumer Ads ID was inserted in the website.  
+ Tested in Tag Assistant Chrome Exension.";
 
           "Website Call Conversion by GTM";
-         "♦ GTM account was created and code was inserted in the website.  ♦ Conversion was created in Ads. ♦ Tag was created for Website Call Conversion.  ♦ Tested with advertiser adding #google-wcc-debug in website url. ♦ We saw 99999, all is ok.";
+         "
+ GTM account was created and code was inserted in the website.  
+ Conversion was created in Ads. 
+ Tag was created for Website Call Conversion.  
+ Tested with advertiser adding #google-wcc-debug in website url. 
+ We saw 99999, all is ok.";
    
           "L1 - Website Call Conversion by Code";
-         "♦ Conversion was created in Ads. ♦  Website Call Conversion code with gtag.js was inserted in the webiste.  ♦ Tested with advertiser adding #google-wcc-debug in website url. ♦ We saw 99999, all is ok.";
+         "
+ Conversion was created in Ads. 
+  Website Call Conversion code with gtag.js was inserted in the webiste.  
+ Tested with advertiser adding #google-wcc-debug in website url. 
+ We saw 99999, all is ok.";
  
           "L1 - Analytics by GTM";
-         "♦ GTM account was created and code was inserted in the website.  ♦ We created the tag for Google analytics page view  ♦ Tested in Analytics Real Time, GTM Preview and Tag Assistant Chrome Exension.";
+         "
+ GTM account was created and code was inserted in the website.  
+ We created the tag for Google analytics page view  
+ Tested in Analytics Real Time, GTM Preview and Tag Assistant Chrome Exension.";
 
           "L1 - Analytics by Code";
-         "♦ The analytics tag code was inserted in the website.  ♦ Created the Goal tag in Google Analytics and inserted the code for this  ♦ Tested in Analytics Real Time and Tag Assistant Chrome Exension.";
+         "
+ The analytics tag code was inserted in the website.  
+ Created the Goal tag in Google Analytics and inserted the code for this  
+ Tested in Analytics Real Time and Tag Assistant Chrome Exension.";
 
           "L1 - Analytics Destination Tracking by GTM";
-         "♦ GTM account was created and the code was inserted in the website.  ♦ We created the tag for Google analytics page view  ♦ Created the Goal tag in Google Analytics and in Google tag Manager ♦ Tested in Analytics Real Time, GTM Preview and Tag Assistant Chrome Exension.";
+         "
+ GTM account was created and the code was inserted in the website.  
+ We created the tag for Google analytics page view  
+ Created the Goal tag in Google Analytics and in Google tag Manager 
+ Tested in Analytics Real Time, GTM Preview and Tag Assistant Chrome Exension.";
   
           "L1 - Analytics Destination Tracking by Code";
-          "♦ The analytics tag code was inserted in the website.  ♦ Created the Destination Goal tag in Google Analytics  ♦ Tested in Analytics Real Time and Tag Assistant Chrome Exension.";
+          "
+ The analytics tag code was inserted in the website.  
+ Created the Destination Goal tag in Google Analytics  
+ Tested in Analytics Real Time and Tag Assistant Chrome Exension.";
    
           "L1 - Analytics Event Tracking by GTM";
-         "♦  GTM account created and Code inserted.  ♦ GTM Tags creation \nForm Submit;\n Whatsapp;\n Chat; ♦ Analytics Goals Creationn\nForm Submit;\n Whatsapp; \nChat;♦ Tested in GTM Debug and Analytics Real-Time\n♦ Published the container in GTM\n♦ Google Ads and Google Analytics Linking. \n♦ Analytics Goals imported to Google Ads.";
+         "
+  GTM account created and Code inserted.  
+ GTM Tags creation \nForm Submit;\n Whatsapp;\n Chat; 
+ Analytics Goals Creationn\nForm Submit;\n Whatsapp; \nChat;
+ Tested in GTM Debug and Analytics Real-Time\n
+ Published the container in GTM\n
+ Google Ads and Google Analytics Linking. \n
+ Analytics Goals imported to Google Ads.";
 
           "L1 - Analytics Event Tracking by Code";
-         "♦ The Analytics code was inserted in the head of the website ♦ The goals was created and inserted the JS with event listeners and sent Analytics events for: \n ♦ Whatsapp Click; \n ♦ Form submit  ♦ Tested in Analytics Real-Time \n ♦ Google Ads and Google Analytics Linking. \n♦ Analytics Goals imported to Google Ads.";
+         "
+ The Analytics code was inserted in the head of the website 
+ The goals was created and inserted the JS with event listeners and sent Analytics events for: \n 
+ Whatsapp Click; \n 
+ Form submit  
+ Tested in Analytics Real-Time \n 
+ Google Ads and Google Analytics Linking. \n
+ Analytics Goals imported to Google Ads.";
 
           "L1 - Analytics Remarketing by GTM";
-         "♦ We inserted the GTM in website. ♦ We created the tag for remarketing Ads in GTM.♦ Tested with advertiser in GTM debug and Tag Assistant♦ Published the container";
+         "
+ We inserted the GTM in website. 
+ We created the tag for remarketing Ads in GTM.
+ Tested with advertiser in GTM debug and Tag Assistant
+ Published the container";
 
           "L1 - Analytics Remarketing by Code";
-         "♦ Inserted remarketing (gtag.js) code in head of the website ♦ Tested with Tag Assistant";
+         "
+ Inserted remarketing (gtag.js) code in head of the website 
+ Tested with Tag Assistant";
   
           "L1 - Cross Domain Tracking by GTM";
-         "♦ Ajusted the Analytics and Remarketing to receive anothers URLs datas  ";
+         "
+ Ajusted the Analytics and Remarketing to receive anothers URLs datas  ";
    
           "L1 - Google Tag Manager Installation";
-         "♦ Created account in Google Tag Manager  ♦ inserted GTM code in website.";
+         "
+ Created account in Google Tag Manager  
+ inserted GTM code in website.";
 
           "L1 - Google Shopping Setup";
-         "♦ Create the account in Google Merchant Center  ♦ Created the product feed with costumer products  Linked Google MC with Google Ads  ♦ We will wait the products approbation";
+         "
+ Create the account in Google Merchant Center  
+ Created the product feed with costumer products  Linked Google MC with Google Ads  
+ We will wait the products approbation";
 
           "L2 - Analytics E-Commerce Tracking By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  Set up GTM to receive information from Data Layer custom events. ♦ We tested everything with the real time analytics, preview gtm and the assistant tag.";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  Set up GTM to receive information from Data Layer custom events. 
+ We tested everything with the real time analytics, preview gtm and the assistant tag.";
 
           "L2 - Analytics E-Commerce Tracking By Code";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  ♦ We tested everything with the analytics real time and the assistant tag. ";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  
+ We tested everything with the analytics real time and the assistant tag. ";
 
           "L2 - Analytics Enhaced E-Commerce Tracking By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  Set up GTM to receive information from Data Layer custom events.  ♦ We tested everything with the real time analytics, preview gtm and the assistant tag.";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  Set up GTM to receive information from Data Layer custom events.  
+ We tested everything with the real time analytics, preview gtm and the assistant tag.";
   
           "L2 - Analytics Enhaced E-Commerce Tracking By Code";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  ♦ We tested everything with the analytics real time and the assistant tag. ";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  
+ We tested everything with the analytics real time and the assistant tag. ";
     
           "L2 - Analytics Dynamic Remarketing (Retail) By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  ♦ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  
+ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
 
           "L2 - Analytics Dynamic Remarketing (Retail) By Code";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  ♦ We tested everything with the real time analytics and the assistant tag.";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  
+ We tested everything with the real time analytics and the assistant tag.";
     
           "L2 - Analytics Dynamic Remarketing (Non - Retail) By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  ♦ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  
+ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
 
           "L2 - Analytics Dynamic Remarketing (Non - Retail) By Code";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  ♦ We tested everything with the real time analytics and the assistant tag.";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  
+ We tested everything with the real time analytics and the assistant tag.";
    
           "L2 - Analytics Troubleshooting";
          "";
@@ -101,43 +192,76 @@
          "";
 
           "L2 - Shopping Feed Optimization";
-         "♦ We found some problems in the Merchant Center and the advertiser was directed how to solve the problems. ";
+         "
+ We found some problems in the Merchant Center and the advertiser was directed how to solve the problems. ";
 
           "L2 - Offline Conversion Import";
          "";
 
           "L2 - Site Wide Tagging / Ads Conversion Tracking - ITP Issue";
-         "• It was validated that: ♦ Conversion Linker was already configured on GTM  ♦ Google Analytics and Google Ads accounts were linked ♦ 'Import site metrics' was enabled♦ 'Autotagging' option was enabled ♦ Gclid was tested and worked well♦ Cookie was storing information successfully ♦ Website had Google Tag Manager, Google Analytics and Remarketing tags working";
+         "• It was validated that: 
+ Conversion Linker was already configured on GTM  
+ Google Analytics and Google Ads accounts were linked 
+ 'Import site metrics' was enabled
+ 'Autotagging' option was enabled 
+ Gclid was tested and worked well
+ Cookie was storing information successfully 
+ Website had Google Tag Manager, Google Analytics and Remarketing tags working";
 
           "L2 - Ads Conversion Tracking Troubleshooting";
-         "• It was validated that: ♦ Conversion Linker was already configured on GTM  ♦ Google Analytics and Google Ads accounts were linked ♦ 'Import site metrics' was enabled♦ 'Autotagging' option was enabled ♦ Gclid was tested and worked well♦ Cookie was storing information successfully ♦ Website had Google Tag Manager, Google Analytics and Remarketing tags working";
+         "• It was validated that: 
+ Conversion Linker was already configured on GTM  
+ Google Analytics and Google Ads accounts were linked 
+ 'Import site metrics' was enabled
+ 'Autotagging' option was enabled 
+ Gclid was tested and worked well
+ Cookie was storing information successfully 
+ Website had Google Tag Manager, Google Analytics and Remarketing tags working";
 
           "L2 - Ads Dynamic Remarketing - Reatil By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  ♦ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  
+ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
   
           "L2 - Ads Dynamic Remarketing - Reatil by Code/h1>";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  ♦ We tested everything with the real time analytics and the assistant tag.";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  
+ We tested everything with the real time analytics and the assistant tag.";
 
           "L2 - Ads Dynamic Remarketing - X (Non-Retail) By GTM";
-         "♦ We inserted the GTM code in the website  ♦ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  ♦ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
+         "
+ We inserted the GTM code in the website  
+ We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information.  Set up GTM to receive information from Data Layer custom events.  
+ We tested everything with the real time analytics, preview gtm and the assistant tag. ";
 
           "L2 - Ads Dynamic Remarketing - X (Non-Retail) By Code";
-         "♦ We inserted the analytics code in the webiste  ♦ We set up in client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  ♦ We tested everything with the real time analytics and the assistant tag.";
+         "
+ We inserted the analytics code in the webiste  
+ We set up in client Google Ads to receive Dynamic Remarketing information.  Set up to receive information from analytics code  
+ We tested everything with the real time analytics and the assistant tag.";
 
           "IP - In Progress";
-         "♦ Advertiser needs to reschedule because he had an unforeseen  ♦ We'll have a comuncation via email";
+         "
+ Advertiser needs to reschedule because he had an unforeseen  
+ We'll have a comuncation via email";
 
           "IL - Inactive 2st Reschedule";
-         "♦ The advertiser rescheduled and missed the second rescheduling, so I'll close this case as inactive.";
+         "
+ The advertiser rescheduled and missed the second rescheduling, so I'll close this case as inactive.";
 
           "IL - Attempting contact 1ST Email";
-         "♦ The Advertiser didn't answer me at the scheduled time, I'll send an email to reschedule.";
+         "
+ The Advertiser didn't answer me at the scheduled time, I'll send an email to reschedule.";
 
           "IL - Attempting contact 2ST Email";
-         " ♦ The Advertiser didn't answer me at the current time, I'll send a second email to reschedule.";
+         " 
+ The Advertiser didn't answer me at the current time, I'll send a second email to reschedule.";
   
           "IL - Inactive 3 day rule";
-         "♦ The Advertiser didn't answer me at the scheduled time, didn't answer my emails and my phone calls, unfortunately I'll send an email to close this case as inactive.";
+         "
+ The Advertiser didn't answer me at the scheduled time, didn't answer my emails and my phone calls, unfortunately I'll send an email to close this case as inactive.";
     
 </script>
 </body>

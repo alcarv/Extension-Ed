@@ -131,47 +131,90 @@ var EDstensionScrpt = document.createElement("script");
             conteudoTag.appendChild(inativoTag);
             // <!-- /status -->
             //<!-- CAIXA DE FRASES -->
+
+            var phBox = document.createElement("select");
+            phBox.setAttribute('id', 'caixadefrases');
+            phBox.setAttribute('onchange', 'caixaFrases(value)');
+
             var task = document.querySelector('#tasksCase').textContent;
 
-                if(task == "")
+                if(task == "Ads Conversion Code" || task == "Ads Event Tracking"){
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode("GTM account was created and code was inserted in the website.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
 
-            var inativoTag = document.createElement("select");
-            inativoTag.setAttribute('id', 'caixadefrases');
-            inativoTag.setAttribute('onchange', 'caixaFrases(value)');
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode("Conversion was created in Ads.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode("Tag was created for Form Submit.  Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode( "The Gtag.js was inserted.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode("Conversion was created in Ads.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode( "I sent a event code for Form Submit.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+
+                    var optnDois = document.createElement("option");
+                    optnDois.setAttribute('value', '0');
+                    var optnDoisC = document.createTextNode( "Tested with advertiser in Analytics Real Time and Tag Assistant extension.");
+                    optnDois.appendChild(optnDoisC);
+                    phBox.appendChild(optnDois);
+                }
 
                 var optnUm = document.createElement("option");
                 optnUm.setAttribute('value', 'n');
                 var optnUmC = document.createTextNode("Escolha suas frases");
                 optnUm.appendChild(optnUmC);
-                inativoTag.appendChild(optnUm);
+                phBox.appendChild(optnUm);
 
                 var optnDois = document.createElement("option");
                 optnDois.setAttribute('value', '0');
                 var optnDoisC = document.createTextNode("0 - conversions created and imported to ads.");
                 optnDois.appendChild(optnDoisC);
-                inativoTag.appendChild(optnDois);
+                phBox.appendChild(optnDois);
 
                 var optnTres = document.createElement("option");
                 optnTres.setAttribute('value', '1');
                 var optnTresC = document.createTextNode("1 - Implemented.");
                 optnTres.appendChild(optnTresC);
-                inativoTag.appendChild(optnTres);
+                phBox.appendChild(optnTres);
                 
                 var optnQuatro = document.createElement("option");
                 optnQuatro.setAttribute('value', '2');
                 var optnQuatroC = document.createTextNode("2 - we did half of the task, and will complete the other half in the next call.");
                 optnQuatro.appendChild(optnQuatroC);
-                inativoTag.appendChild(optnQuatro);
+                phBox.appendChild(optnQuatro);
 
                 var optnCinco = document.createElement("option");
                 optnCinco.setAttribute('value', '3');
                 var optnCincoC = document.createTextNode("3 - Não interessa pra você, falo? Palhaço!");
                 optnCinco.appendChild(optnCincoC);
-                inativoTag.appendChild(optnCinco);
+                phBox.appendChild(optnCinco);
 
 
             
-            conteudoTag.appendChild(inativoTag);
+            conteudoTag.appendChild(phBox);
             //<!-- /caixa de frases -->
             //<!-- div das bolinhas -->
             var bolinhasTag = document.createElement("div");
