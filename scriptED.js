@@ -1,19 +1,14 @@
 "use strict";
 console.log('Versão brasileira HerbED richED');
 
-/*    
-    INIT PROGRAM
-var element = parent.document.querySelector('#ext-comp-1038').contentWindow.document.body
-var EDstensionScrpt = document.createElement("script");
-           EDstensionScrpt.setAttribute('src', 'https://alefe.sandbox.msiteproject.com/ExtensionEd/scriptED.js-');
-           element.appendChild(EDstensionScrpt); */
+window.optTxt = {};
 
     /* TAMPERMONKEY/GREASEMONKEY /
 
     function functED(){
         var tabs =[];
         var tabID;
-    
+
         for (let i = 0; i < 6; i++) {
             tabs.push(document.querySelector('#scc-pt-'+i+' iframe').contentWindow.document.body);
         };
@@ -22,7 +17,7 @@ var EDstensionScrpt = document.createElement("script");
             var EDstensionScrpt = document.createElement("script");
             EDstensionScrpt.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/scriptED.js');
             element.appendChild(EDstensionScrpt);
-        }; 
+        };
     };
     setTimeout(functED, 1000);*/
 
@@ -33,13 +28,16 @@ var EDstensionScrpt = document.createElement("script");
     // link css e font
     var estilED = document.createElement("link");
     var fontED = document.createElement("link");
+    var jQLib = document.createElement("script");
     estilED.setAttribute('rel', 'stylesheet');
     estilED.setAttribute('type', 'text/css');
     estilED.setAttribute('href', 'https://dantase.sandbox.msiteproject.com/EDstension/stylED.css');
     fontED.setAttribute('rel', 'stylesheet');
     fontED.setAttribute('href', 'https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+    jQLib.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
     document.head.appendChild(estilED);
     document.head.appendChild(fontED);
+    document.head.appendChild(jQLib);
 
     // <!-- MiniBG -->
     var miniTag = document.createElement("input");
@@ -94,14 +92,14 @@ var EDstensionScrpt = document.createElement("script");
             implementadoTag.setAttribute('name', 'implementado');
             implementadoTag.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/impl.png');
             implementadoTag.setAttribute('id', 'implementado');
-            implementadoTag.setAttribute('onclick', 'implementado();');
+            implementadoTag.setAttribute('onclick', 'statusBtn(1);');
 
-            var emProgressoTag = document.createElement("input"); //implemented
+            var emProgressoTag = document.createElement("input"); //emProgresso
             emProgressoTag.setAttribute('type', 'image');
-            emProgressoTag.setAttribute('name', 'implementado');
+            emProgressoTag.setAttribute('name', 'emProgresso');
             emProgressoTag.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/inPr.png');
             emProgressoTag.setAttribute('id', 'emProgresso');
-            emProgressoTag.setAttribute('onclick', 'emProgresso();');
+            emProgressoTag.setAttribute('onclick', 'statusBtn(2);');
 
             var emLigacaoTag = document.createElement("input"); //emLigacao
             emLigacaoTag.setAttribute('type', 'image');
@@ -115,14 +113,14 @@ var EDstensionScrpt = document.createElement("script");
             tentativaContatoTag.setAttribute('name', 'tentativaContato');
             tentativaContatoTag.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/atCn.png');
             tentativaContatoTag.setAttribute('id', 'tentativaContato');
-            tentativaContatoTag.setAttribute('onclick', 'tentativaContato();');
-            
+            tentativaContatoTag.setAttribute('onclick', 'statusBtn(3);');
+
             var inativoTag = document.createElement("input"); //inativo
             inativoTag.setAttribute('type', 'image');
             inativoTag.setAttribute('name', 'inativo');
             inativoTag.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/inct.png');
             inativoTag.setAttribute('id', 'inativo');
-            inativoTag.setAttribute('onclick', 'inativo();');
+            inativoTag.setAttribute('onclick', 'statusBtn(4);');
 
             conteudoTag.appendChild(implementadoTag);
             conteudoTag.appendChild(emProgressoTag);
@@ -136,85 +134,156 @@ var EDstensionScrpt = document.createElement("script");
             phBox.setAttribute('id', 'caixadefrases');
             phBox.setAttribute('onchange', 'caixaFrases(value)');
 
-            var task = document.querySelector('#tasksCase').textContent;
+            var optnUm = document.createElement("option");
+            optnUm.setAttribute('value', 'n');
+            var optnUmC = document.createTextNode("Escolha suas frases");
+            optnUm.appendChild(optnUmC);
+            phBox.appendChild(optnUm);
 
-                if(task == "Ads Conversion Code" || task == "Ads Event Tracking"){
+            var task = document.querySelectorAll('#tasksCase');
+
+            for(let i = 0; i < task.length; i++){
+                if(task[i].textContent == "Ads Conversion Code" || task[i].textContent == "Ads Event Tracking"){
                     var optnDois = document.createElement("option");
                     optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode("GTM account was created and code was inserted in the website.");
+                    var optnDoisC = document.createTextNode("GTM account was created and code was inserted in the website. ");
                     optnDois.appendChild(optnDoisC);
                     phBox.appendChild(optnDois);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode("Conversion was created in Ads.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("Conversion was created in Ads. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode("Tag was created for Form Submit.  Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnQuatro = document.createElement("option");
+                    optnQuatro.setAttribute('value', '0');
+                    var optnQuatroC = document.createTextNode("Tag was created for Form Submit.  Tested with advertiser in Real time Analytics and Tag Assistant Chrome extension. ");
+                    optnQuatro.appendChild(optnQuatroC);
+                    phBox.appendChild(optnQuatro);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode( "The Gtag.js was inserted.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnCinco = document.createElement("option");
+                    optnCinco.setAttribute('value', '0');
+                    var optnCincoC = document.createTextNode( "The Gtag.js was inserted. ");
+                    optnCinco.appendChild(optnCincoC);
+                    phBox.appendChild(optnCinco);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode("Conversion was created in Ads.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnSeis = document.createElement("option");
+                    optnSeis.setAttribute('value', '0');
+                    var optnSeisC = document.createTextNode("Conversion was created in Ads. ");
+                    optnSeis.appendChild(optnSeisC);
+                    phBox.appendChild(optnSeis);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode( "I sent a event code for Form Submit.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnSete = document.createElement("option");
+                    optnSete.setAttribute('value', '0');
+                    var optnSeteC = document.createTextNode( "I sent a event code for Form Submit. ");
+                    optnSete.appendChild(optnSeteC);
+                    phBox.appendChild(optnSete);
 
-                    var optnDois = document.createElement("option");
-                    optnDois.setAttribute('value', '0');
-                    var optnDoisC = document.createTextNode( "Tested with advertiser in Analytics Real Time and Tag Assistant extension.");
-                    optnDois.appendChild(optnDoisC);
-                    phBox.appendChild(optnDois);
+                    var optnOito = document.createElement("option");
+                    optnOito.setAttribute('value', '0');
+                    var optnOitoC = document.createTextNode( "Tested with advertiser in Analytics Real Time and Tag Assistant extension. ");
+                    optnOito.appendChild(optnOitoC);
+                    phBox.appendChild(optnOito);
                 }
 
-                var optnUm = document.createElement("option");
-                optnUm.setAttribute('value', 'n');
-                var optnUmC = document.createTextNode("Escolha suas frases");
-                optnUm.appendChild(optnUmC);
-                phBox.appendChild(optnUm);
+                else if(task[i].textContent == "Ads Remarketing" || task[i].textContent == "Google Analytics Remarketing"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("GTM account was created and code was inserted in the website. Created the tag for Remarketing in GTM. Tested in Tag Assistant. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
 
-                var optnDois = document.createElement("option");
-                optnDois.setAttribute('value', '0');
-                var optnDoisC = document.createTextNode("0 - conversions created and imported to ads.");
-                optnDois.appendChild(optnDoisC);
-                phBox.appendChild(optnDois);
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '1');
+                    var optnTresC = document.createTextNode("Inserted remarketing (gtag.js) code in website's head. Tested with Tag Assistant. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
 
-                var optnTres = document.createElement("option");
-                optnTres.setAttribute('value', '1');
-                var optnTresC = document.createTextNode("1 - Implemented.");
-                optnTres.appendChild(optnTresC);
-                phBox.appendChild(optnTres);
+                else if(task[i].textContent == "Analytics Destination Tracking" || task[i].textContent == "Analytics Event Tracking"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("GTM account was created and the code was inserted in the website. We created the tag for Google analytics page view. Created the Goal tag in Google Analytics and in Google tag Manager. Tested in Analytics Real Time, GTM Preview and Tag Assistant Chrome Exension. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '1');
+                    var optnTresC = document.createTextNode("The analytics tag code was inserted in the website. Created the Goal tag in Google Analytics and inserted the code for this. Tested in Analytics Real Time and Tag Assistant Chrome Exension. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+
+                else if(task[i].textContent == "Cross Domain Tracking"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("Ajusted the Analytics and Remarketing to receive anothers URLs datas. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+
+                else if(task[i].textContent == "Google Tag Manager Installation"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("Created account in Google Tag Manager inserted GTM code in website. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+
+                else if(task[i].textContent == "Analytics E-Commerce Tracking" || task[i].textContent == "Analytics Enhanced E-Commerce Tracking"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("We inserted the GTM code in the website. We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information.  Set up GTM to receive information from Data Layer custom events. We tested everything with the real time analytics, preview gtm and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '1');
+                    var optnTresC = document.createTextNode("We inserted the analytics code in the webiste. We set up in Google Analytics and client Google Ads to receive Ecommerce transaction information. We tested everything with the analytics real time and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+
+                else if(task[i].textContent == "Google Analytics Dynamic Remarketing (Retail)" || task[i].textContent == "Google Analytics Dynamic Remarketing (Non-Retail)"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("We inserted the GTM code in the website. We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information. Set up GTM to receive information from Data Layer custom events. We tested everything with the real time analytics, preview gtm and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '1');
+                    var optnTresC = document.createTextNode("We inserted the analytics code in the webiste. We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information. Set up to receive information from analytics code. We tested everything with the real time analytics and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+
+                else if(task[i].textContent == "Dynamic Remarketing - Retail" || task[i].textContent == "Dynamic Remarketing - X (Non-Retail)"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("We inserted the GTM code in the website. We set up in Google Analytics and client Google Ads to receive Dynamic Remarketing information. Set up GTM to receive information from Data Layer custom events. We tested everything with the real time analytics, preview gtm and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '1');
+                    var optnTresC = document.createTextNode("We inserted the analytics code in the webiste. We set up in client Google Ads to receive Dynamic Remarketing information. Set up to receive information from analytics code. We tested everything with the real time analytics and the assistant tag. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
                 
-                var optnQuatro = document.createElement("option");
-                optnQuatro.setAttribute('value', '2');
-                var optnQuatroC = document.createTextNode("2 - we did half of the task, and will complete the other half in the next call.");
-                optnQuatro.appendChild(optnQuatroC);
-                phBox.appendChild(optnQuatro);
+                else if(task[i].textContent == "Google Shopping Setup"){
+                    var optnTres = document.createElement("option");
+                    optnTres.setAttribute('value', '0');
+                    var optnTresC = document.createTextNode("Create the account in Google Merchant Center. Created the product feed with costumer products Linked Google MC with Google Ads. We will wait the products approbation. ");
+                    optnTres.appendChild(optnTresC);
+                    phBox.appendChild(optnTres);
+                }
+            }
 
-                var optnCinco = document.createElement("option");
-                optnCinco.setAttribute('value', '3');
-                var optnCincoC = document.createTextNode("3 - Não interessa pra você, falo? Palhaço!");
-                optnCinco.appendChild(optnCincoC);
-                phBox.appendChild(optnCinco);
-
-
-            
             conteudoTag.appendChild(phBox);
+
             //<!-- /caixa de frases -->
             //<!-- div das bolinhas -->
             var bolinhasTag = document.createElement("div");
@@ -240,7 +309,7 @@ var EDstensionScrpt = document.createElement("script");
                 bolinhaTres.setAttribute('onclick', 'clearBtn(2)');
                 var bolinhaTresC = document.createTextNode("n");
                 bolinhaTres.appendChild(bolinhaTresC);
-                
+
                 var bolinhaQuatro = document.createElement("button");
                 bolinhaQuatro.setAttribute('type', 'button');
                 bolinhaQuatro.setAttribute('id', 'bola3');
@@ -459,10 +528,27 @@ var EDstensionScrpt = document.createElement("script");
         bLBGTag.appendChild(botoesBl14);
         //<!-- /botões de bl -->
 
-    document.body.appendChild(bLBGTag);    
+    document.body.appendChild(bLBGTag);
     //<!-- blMenu -->
 
 // /!!!HTML BUILD!!! //
+        function atrVal(){
+            //atribuição de valor e adicionando valores aos opts
+            var options = document.querySelectorAll("#caixadefrases option");
+            if(options){
+                for (let i = 0; i < options.length; i++) {
+                    window.optTxt[i] = options[i].textContent;
+                    if(i < 10 && options[i].value != "n"){
+                        options[i].textContent = "0" + i + " - " + options[i].textContent;
+                    }
+                    else if(options[i].value != "n") {options[i].textContent = i + " - " + options[i].textContent;}
+                    options[i].value = i;
+                }
+            }else{
+                setTimeout(atrVal,1000);
+            }
+        }
+        setTimeout(atrVal,1000);
 
 var cmsED = 32;
 var scshED = 1;
@@ -480,10 +566,12 @@ var bolas = [bola0, bola1, bola2, bola3, bola4, bola5, bola6];
 
 var conteudoComentario = "";
 
+var btnAct;
+
 // botao on call
 function emLigacao(){
     //click no campo de status
-    document.getElementById('cas7_ileinner').click();
+    setTimeout(function(){document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
     setTimeout(function(){document.getElementById('cas7').selectedIndex = 0;}, 1300);
     //clique no botão de ok da janelinha de seleção
@@ -492,10 +580,44 @@ function emLigacao(){
     //document.querySelector('#topButtonRow > input:nth-child(1)').click();
 };
 
+//Status de botão ativo
+function statusBtn(btnNbr){
+    btnAct = btnNbr
+
+    switch(btnNbr) {
+        case 1:
+            document.getElementById('implementado').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/implA.png';
+            document.getElementById('emProgresso').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inPr.png';
+            document.getElementById('tentativaContato').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/atCn.png';
+            document.getElementById('inativo').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inct.png';
+        break;
+        case 2:
+            document.getElementById('implementado').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/impl.png';
+            document.getElementById('emProgresso').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inPrA.png';
+            document.getElementById('tentativaContato').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/atCn.png';
+            document.getElementById('inativo').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inct.png';
+        break;
+        case 3:
+            document.getElementById('implementado').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/impl.png';
+            document.getElementById('emProgresso').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inPr.png';
+            document.getElementById('tentativaContato').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/atCnA.png';
+            document.getElementById('inativo').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inct.png';
+        break;
+        case 4:
+            document.getElementById('implementado').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/impl.png';
+            document.getElementById('emProgresso').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inPr.png';
+            document.getElementById('tentativaContato').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/atCn.png';
+            document.getElementById('inativo').src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inctA.png';
+        break;
+        default:
+        // code block
+    };
+}
+
 // botao implemented
 function implementado(){
     //click no campo de status
-    document.getElementById('cas7_ileinner').click();
+    setTimeout(function(){document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
     setTimeout(function(){document.getElementById('cas7').selectedIndex = 4;}, 1000);
     //clique no botão de ok da janelinha de seleção
@@ -542,9 +664,9 @@ function implementado(){
 // botao em progresso
 function emProgresso(){
     //click no campo de status
-    document.getElementById('cas7_ileinner').click();
+    setTimeout(function(){document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(function(){document.getElementById('cas7').selectedIndex = 2;}, 1300);
+    setTimeout(function(){$('#cas7').val("In progress").change();}, 1300);
     //seleção de sub status
     setTimeout(function(){document.getElementById('00N3600000QISAX').selectedIndex = 1;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -574,9 +696,9 @@ function emProgresso(){
 // botao em att cont
 function tentativaContato(){
     //click no campo de status
-    document.getElementById('cas7_ileinner').click();
+    setTimeout(function(){document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(function(){document.getElementById('cas7').selectedIndex = 1;}, 1300);
+    setTimeout(function(){$('#cas7').val("Attempting Contact").change();}, 1300);
     //seleção de sub status
     setTimeout(function(){document.getElementById('00N3600000QISAX').selectedIndex = 7;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -606,9 +728,9 @@ function tentativaContato(){
 // botao em inativo
 function inativo(){
     //click no campo de status
-    document.getElementById('cas7_ileinner').click();
+    setTimeout(function(){document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(function(){document.getElementById('cas7').selectedIndex = 9;}, 1300);
+    setTimeout(function(){$('#cas7').val("Inactive").change();}, 1300);
     //seleção de sub status
     setTimeout(function(){document.getElementById('00N3600000QISAX').selectedIndex = 5;}, 1400);
     //click no campo de calendario
@@ -649,7 +771,7 @@ function caixaFrases(idED){
             bolas[i].ativa = true;
             bolas[i].objeto.style.backgroundColor = "rgb(65, 230, 147)";
             bolas[i].objeto.textContent = idED;
-            switch(idED) {
+            /*switch(idED) {
                 case "0":
                     bolas[i].conteudo = 'conversions created and imported to ads. ';
                 break;
@@ -660,11 +782,14 @@ function caixaFrases(idED){
                     bolas[i].conteudo = 'we did half of the task, and will complete the other half in the next call. ';
                 break;
                 case "3":
-                    bolas[i].conteudo = 'Não interessa pra você, falo? Palhaço! ';
+                    bolas[i].conteudo = 'testetesteteste ';
                 break;
                 default:
                 // code block
             };
+            break;*/
+            //atribuição de texto de comentario
+            bolas[i].conteudo = window.optTxt[idED];
             break;
         };
     };
@@ -681,12 +806,12 @@ function clearBtn(i){
 //Fire in the hole
 function fogoNoBuraco(){
     for (let i = 0; i < bolas.length; i++) {
-        const element = bolas[i];
-        if (element.conteudo != '') {
-            conteudoComentario = conteudoComentario + element.conteudo;
+        if (bolas[i].conteudo != '') {
+            conteudoComentario = conteudoComentario + bolas[i].conteudo;
         };
     };
-    
+
+    if (conteudoComentario != '') {
     //click no campo de comments
     document.getElementById('00N3600000QISAH_ileinner').click();
     //atribuição na caixa de comentarios
@@ -696,6 +821,25 @@ function fogoNoBuraco(){
 
     //clear conteudo
     conteudoComentario ='';
+    }
+
+    switch(btnAct) {
+        case 1:
+            implementado();
+        break;
+        case 2:
+            emProgresso();
+        break;
+        case 3:
+            tentativaContato();
+        break;
+        case 4:
+            inativo();
+        break;
+        default:
+        // code block
+    };
+
     //setTimeout(salvar, 2000);
 };
 
@@ -712,7 +856,7 @@ function abrirCorpo(){
 
 function fecharCorpo(){
     document.getElementById('corpo').style.visibility = 'hidden';
-    document.getElementById('miniED').style.visibility = 'visible'; 
+    document.getElementById('miniED').style.visibility = 'visible';
 
     //fechar bad lead também
     const bgbl = document.getElementById('bLBG').style;
@@ -720,11 +864,11 @@ function fecharCorpo(){
     bgbl.opacity = 0;
     bgbl.right = '0px';
     iconeBgbl.opacity = 0.5;
-    document.getElementById('leadmau').onmouseover = function() 
+    document.getElementById('leadmau').onmouseover = function()
     {
         this.style.opacity = 1;
     }
-    document.getElementById('leadmau').onmouseout = function() 
+    document.getElementById('leadmau').onmouseout = function()
     {
         this.style.opacity = 0.5;
     }
@@ -741,11 +885,11 @@ function menuBL(){
         bgbl.right = '294px';
         bgbl.zIndex = 3;
         iconeBgbl.opacity = 0;
-        document.getElementById('leadmau').onmouseover = function() 
+        document.getElementById('leadmau').onmouseover = function()
         {
             this.style.opacity = 0;
         }
-        document.getElementById('leadmau').onmouseout = function() 
+        document.getElementById('leadmau').onmouseout = function()
         {
             this.style.opacity = 0;
         }
@@ -755,11 +899,11 @@ function menuBL(){
         bgbl.opacity = 0;
         bgbl.right = '0px';
         iconeBgbl.opacity = 0.5;
-        document.getElementById('leadmau').onmouseover = function() 
+        document.getElementById('leadmau').onmouseover = function()
         {
             this.style.opacity = 1;
         }
-        document.getElementById('leadmau').onmouseout = function() 
+        document.getElementById('leadmau').onmouseout = function()
         {
             this.style.opacity = 0.5;
         }
