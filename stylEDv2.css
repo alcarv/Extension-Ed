@@ -1,0 +1,194 @@
+body{
+    background-color: #4285f4;
+    font-family: 'Noto Sans', sans-serif;
+}
+input:focus, textarea:focus, select:focus, button:focus{
+    outline: none;
+}
+#corpo{
+    background: white;
+    border-radius: 30px;
+    /*height: 580px;*/
+    width: 600px;
+    position: fixed;
+    top: 150px;
+    right: 15px;
+}
+#xizinho{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+
+}
+#logo{
+    position: absolute;
+    left: 13px;
+    top: 10px;
+}
+
+#botoesPrin{
+    display: block;
+    margin: auto;
+    width: 350px;
+    margin-top: 68px;
+}
+#botoesPrin #imp {
+ padding-right: 20px;
+}
+input:focus{
+    outline: none;
+}
+#botoesPrin #inpro {
+    padding-right: 20px;
+}
+#botoesPrin #oncall {
+    padding-right: 20px;
+}
+#botoesPrin #attempt {
+    padding-right: 20px;
+}
+#botoesPrin #inactive {
+    /*padding-right: 0.8%;*/
+}
+#botoesSec {
+    display: block;
+    margin: auto;
+    width: 84px;
+    margin-top: 13px;
+}
+#botoesSec #gtmBtn { 
+}
+#botoesSec #tasksBtn { 
+    padding-left: 20px;
+}
+
+#divcomentarios{
+    width: 300px;
+    float: left;
+    margin-top: 9px;
+    clear: left;
+}
+.comentario{
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    border-radius: 30px;
+    border-style: none;
+    width: 220px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    background: #4285f4;
+    color: white;
+    margin-bottom: 5px;
+    padding: 0 12px;
+    font-size: 10pt;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+}
+#addComent{
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    border-radius: 15px;
+    border-style: none;
+    width: 200px;
+    height: 38px;
+    display: block;
+    margin: auto;
+    background: #d2d2e2;
+    margin-top: 2px;
+    resize: vertical;
+    color: white;
+    font-size: 10pt;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+
+#divprints{
+    width: 300px;
+    float: left;
+    margin-top: 9px;
+    clear: right;
+}
+.print{
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    border-radius: 30px;
+    border-style: none;
+    width: 220px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    background: #4285f4;
+    color: white;
+    margin-bottom: 5px;
+    padding: 0 12px;
+    font-size: 10pt;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    padding-left: 0;
+    line-height: 22px;
+}
+/*.print p, #divprints .nObrigatorio p{
+    padding-left: 7px;
+    display: inline;
+    position: relative;
+    top: -5px;
+}*/
+.editBtn{
+    float: left;
+    padding-right: 7px;
+}
+
+#fogonoburaco{
+    border-radius: 30px;
+    border: 0px solid;
+    background-color: #0f9d58;
+    height: 35px;
+    width: 131px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 14pt;
+    display: block;
+    margin: auto;
+    margin-top: 200px;
+
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+}
+
+.nObrigatorio{
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    border-radius: 30px;
+    border-style: none;
+    width: 220px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    background: #8db5f7;
+    color: white;
+    margin-bottom: 5px;
+    padding: 0 12px;
+    font-size: 10pt;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+}
+#divprints .nObrigatorio{
+    padding-left: 0;
+    line-height: 22px;
+}
+
+.clearMan{
+    margin-top: 95px;
+    clear: both;
+}
