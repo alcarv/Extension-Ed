@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="stylEDv2.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scriptEDv2.js"></script>
 </head>
 <body>
     <div id="corpo">
@@ -33,17 +34,26 @@
             <button class="comentario">Checked/ Linked Analytics with Ads and Imported site metrics</button>
             <button class="comentario">Checked Auto Tagging on Ads</button>
             <button class="comentario">Checked Real time on Analytics to validate</button>
-            <button class="nObrigatorio">Attribution Model for the New Conversion asked for the AM configured</button>
+            <button class="nObrigatorio" title="Attribution Model for the New Conversion asked for the AM configured">Attribution Model for the New Conversion asked for the AM configured</button>
             <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea>
         </div>
         <div id="divprints">
+            <div id="printModal">
+                <p>printName</p>
+                <input type="image" src="images/closeBtn.svg" id="printXis" onclick="fecharCorpo();">
+                <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>
+                
+            </div>
             <button class="print"><input type="image" src="images/editBtn.svg" class='editBtn'>Tag created:</button>
             <button class="print"><input type="image" src="images/editBtn.svg" class='editBtn'>GA linked and metrics imported:</button>
             <button class="print"><input type="image" src="images/editBtn.svg" class='editBtn'>GTM Preview:</button>
             <button class="print"><input type="image" src="images/editBtn.svg" class='editBtn'>Auto Tagging:</button>
             <button class="print"><input type="image" src="images/editBtn.svg" class='editBtn'>GA Real Time:</button>
             <button class="nObrigatorio"><input type="image" src="images/editBtn.svg" class='editBtn'>Attribution Model for the New Conversion asked for the AM:</button>
+
+            <button class="addPrint">+</button>
         </div>
+        <div id="modalBG"></div>
         <div class="clearMan"></div>
 
         <button type="button" id="fogonoburaco">Fill</button>
