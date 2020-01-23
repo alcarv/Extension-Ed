@@ -1,4 +1,4 @@
-console.log('ed e alefe os barões da pisadinha');
+console.log('Ed e Alefe os barões da pisadinha');
 
 //script do lefoso
 const imp = document.querySelector('#imp');
@@ -62,7 +62,7 @@ mudStatus = () =>  {
             gtmBtn.src = 'images/gtmBtn.svg'
         }
     });
-    tasksBtn.addEventListener('click', (event) => {
+    /*tasksBtn.addEventListener('click', (event) => {
         count ++;
         tasksBtn.src = 'images/tasksBtnAtv.svg'
         //show modal
@@ -72,7 +72,7 @@ mudStatus = () =>  {
             tasksBtn.src = 'images/tasksBtn.svg'
             fecharmodal();
         }
-    });
+    });*/
     
 };
 
@@ -271,10 +271,64 @@ fogoNoBuraco = () => {
     //setTimeout(salvar, 2000);
 };
 
+//função para eliminar elementos repeditos de uma array
+function clearArray(array) {
+    //olha cada elemento da array
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        vaiMorrer = [];
+        const indiceMacro = i;
+        //verifica se já existe e adiciona o indice do elemento repetido a uma segunda array
+        for (let e = 0; e < array.length; e++) {
+            const elemento = array[e];
+            indiceMicro = e;
+            if (element == elemento && indiceMacro != indiceMicro) {
+                vaiMorrer.push(e);
+            };
+            
+        };
+        //elimina da array todos os elementos repetidos baseados nos indices
+        for (let a = vaiMorrer.length-1; a >= 0; a--) {
+            const elementa = vaiMorrer[a];
+            array.splice(elementa, 1);
+        };
+        
+    }
+}
+
+
+/* build do campo task
+    var taskString = [];
+    var task = ["ads","analytics","Gtm"];//deletar no futuro
+    //loop para pegar os textContent dos elementos span
+    for (let i = 0; i < task.length; i++) {
+        const element = task[i];
+        taskString.push(element.textContent);
+    }
+
+    //loop para criar o conteudo da #taskModal
+    const taskModal = document.getElementById('taskModal');
+    for (let i = 0; i < taskString.length; i++) {
+        const element = taskString[i];
+        const div = document.createElement("div");
+            const h5 = document.createElement("h5");
+                h5.setAttribute('title', element);
+                const h5Text = document.createTextNode(element);
+                h5.appendChild(h5Text);
+            const input = document.createElement("input");
+                input.setAttribute('class', 'qualTask');
+                input.setAttribute('placeholder', 'Tag de que?');
+        div.appendChild(h5);
+        div.appendChild(input);
+        const clear = document.createElement("div");
+            clear.setAttribute('class', 'clearDaTask');
+        taskModal.appendChild(div);
+    }*/
+
+
 //Build de comentarios
 cmArray = ["Universal Analytics tag created on GTM", "Tested with GTM Preview and Tag fired", "Checked/ Linked Analytics with Ads and Imported site metrics", "Checked Auto Tagging on Ads", "Checked Real time on Analytics to validate"];
-cmnArray = ["Attribution Model for the New Conversion asked for the AM configured"];
-
+cmnArray =[];
 var divcomentarios = document.getElementById('divcomentarios');
 
     //build de comentarios não obrigatórios
@@ -292,6 +346,7 @@ for (let i = 0; i < cmArray.length; i++) {
     const element = cmArray[i];
     const button = document.createElement("button");
     button.setAttribute('class', 'comentario');
+    button.setAttribute('title', element);
     const btnText = document.createTextNode(element);
     divcomentarios.insertBefore(button, divcomentarios.childNodes[i]);
     button.appendChild(btnText);
@@ -300,7 +355,7 @@ for (let i = 0; i < cmArray.length; i++) {
 
 //Build de prints
 prtArray = ["Tag created:", "GA linked and metrics imported:", "GTM Preview:", "Auto Tagging:", "GA Real Time:"];
-prtnArray = ["Attribution Model for the New Conversion asked for the AM:"];
+prtnArray = [];
 
 var divprints = document.getElementById('divprints');
 
@@ -310,6 +365,7 @@ for (let i = 0; i < prtnArray.length; i++) {
     const button = document.createElement("button");
     const input = document.createElement("input");
     button.setAttribute('class', 'nObrigatorio');
+    button.setAttribute('title', element);
     input.setAttribute('class', 'editBtn');
     input.setAttribute('type', 'image');
     input.setAttribute('src', 'images/editBtn.svg');
@@ -326,9 +382,12 @@ for (let i = 0; i < prtArray.length; i++) {
     const button = document.createElement("button");
     const input = document.createElement("input");
     button.setAttribute('class', 'print');
+    button.setAttribute('title', element);
     input.setAttribute('class', 'editBtn');
     input.setAttribute('type', 'image');
     input.setAttribute('src', 'images/editBtn.svg');
+    input.setAttribute('printNome', element);
+    input.setAttribute('prints', '');
     input.addEventListener('click', function(){showModal(i, true)})
     const btnText = document.createTextNode(element);
     divprints.insertBefore(button, divprints.childNodes[i]);
@@ -337,7 +396,7 @@ for (let i = 0; i < prtArray.length; i++) {
     button.style.opacity = 1;
 }
 
-// adicionando comentaios
+// adicionando prints
 document.querySelector('.addPrint').addEventListener("click", function () { 
     const button = document.createElement("button");
     const input = document.createElement("input");
@@ -376,33 +435,46 @@ $('#printModal')[0].style.visibility = "hidden";
 let modalVisivel;
 
 //document.querySelector('#printXis').addEventListener('click', function(){showModal(0)});
-document.querySelector('#taskModalBG').addEventListener('click', function(){showModal(0)});
+document.querySelector('#printModalBG').addEventListener('click', function(){showModal(0)});
 
+//abrir e fechar modar
 function showModal(i, obr){
-    console.log(i);
+
     modalVisivel = $('#printModal')[0].style.visibility == "hidden";
+
+    //exibir modal em um print obrigatório
     if(modalVisivel && obr){
         $('.print')[i].appendChild($('#printModal')[0]);
         $('#printModal')[0].style.visibility = "visible";
-        $('#taskModalBG')[0].style.visibility = "visible";
+        $('#printModalBG')[0].style.visibility = "visible";
     }
+    //hide em um print obrigatório
     else if(obr){
         $('#printModal')[0].style.visibility = "hidden";
-        $('#taskModalBG')[0].style.visibility = "hidden";
+        $('#printModalBG')[0].style.visibility = "hidden";
     };
 
+    //exibir modal em um print ñ obrigatório
     if(modalVisivel && !obr){
         $('#divprints .nObrigatorio')[i].appendChild($('#printModal')[0]);
         $('#printModal')[0].style.visibility = "visible";
-        $('#taskModalBG')[0].style.visibility = "visible";
+        $('#printModalBG')[0].style.visibility = "visible";
     }
+    //hide em um print ñ obrigatório
     else if(!obr){
         $('#printModal')[0].style.visibility = "hidden";
-        $('#taskModalBG')[0].style.visibility = "hidden";
+        $('#printModalBG')[0].style.visibility = "hidden";
     };
 
 };
 
-function fecharmodal() {
+/*function fecharmodal() {
     $('#taskModal')[0].style.visibility = 'hidden';
+}*/
+
+//função para colocar os prints no campo de comentário
+function attPrints(){
+    document.querySelector('#publisherAttachTextPost').click();
+    document.querySelector('iframe').contentWindow.document.body.classList.remove('placeholder');
+    document.querySelector('iframe').contentWindow.document.body.textContent = printsTxt;
 }

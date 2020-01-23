@@ -63,16 +63,11 @@ input:focus{
 #botoesPrin #attempt {
     padding-right: 20px;
 }
-#botoesPrin #inactive {
-    /*padding-right: 0.8%;*/
-}
 #botoesSec {
     display: block;
     margin: auto;
-    width: 84px;
+    width: 30px;
     margin-top: 13px;
-}
-#botoesSec #gtmBtn { 
 }
 #botoesSec #tasksBtn { 
     padding-left: 20px;
@@ -84,6 +79,8 @@ input:focus{
     margin-top: 9px;
     clear: left;
     max-height: 350px;
+    overflow:hidden;
+    overflow-y: auto;
 }
 .comentario{
     white-space: nowrap;
@@ -234,7 +231,6 @@ input:focus{
     background: #fff;
     border-radius: 13px;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
-    visibility: hidden;
     transition: .2s ease;
 }
 #taskModal{
@@ -275,7 +271,8 @@ input:focus{
     white-space: nowrap;
     overflow:hidden !important;
     text-overflow: ellipsis;
-    margin-top: 27px;
+    padding-top: 5px;
+    margin-top: 0;
     margin-bottom: 15px;
 }
 
@@ -346,6 +343,12 @@ input:focus{
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
     padding: 5px;
-    margin-top: 22px;
-    margin-right: 5px;
+    /*margin-top: 12px;
+    margin-right: 5px;*/
+}
+.clearDaTask{
+    clear: both;
+}
+#taskModal > div{
+    margin-top: 25px;
 }
