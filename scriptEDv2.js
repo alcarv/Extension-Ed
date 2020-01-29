@@ -59,11 +59,9 @@ mudStatus = () =>  {
         count ++;
         gtmBtn.src = 'images/gtmBtnAtv.svg'
         gtmOn = true;
-        console.log(gtmOn);
         if(count%2 == 0) {
             gtmBtn.src = 'images/gtmBtn.svg'
             gtmOn = false;
-            console.log(gtmOn);
         }
     //});
     /*tasksBtn.addEventListener('click', (event) => {
@@ -78,7 +76,7 @@ mudStatus = () =>  {
         }
     });*/
         comments(gtmOn);
-
+        prints(gtmOn);
     });
     
 };
@@ -337,6 +335,7 @@ function clearArray(array) {
 cmnArray =[];
 var divcomentarios = document.getElementById('divcomentarios');
 
+// build de comments
 comments = () => {
     cmArray = [];
     
@@ -467,6 +466,158 @@ comments = () => {
 
 comments();
 
+
+// build de prints
+
+prints = () => {
+    prtArray = [];
+    
+    //var task = document.querySelectorAll('#tasksCase');
+    var task = []
+
+    const teste = document.createElement("p");
+    teste.textContent = "Ads Conversion Code";
+    task.push(teste);
+
+    const teste2 = document.createElement("p");
+    teste2.textContent = "Analytics Destination Tracking";
+    task.push(teste2);
+
+    const divprints = document.getElementById('divprints');
+
+    botoes = document.querySelectorAll('#divprints button');
+    for (let i = 0; i < botoes.length; i++) {
+        if (botoes[i].className != 'addPrint') {
+            botoes[i].remove();
+            
+        }
+    }
+    
+    for(let i = 0; i < task.length; i++){
+        if(task[i].textContent == "Ads Conversion Code" || task[i].textContent == "Ads Event Tracking"){
+                if(gtmOn == true){
+                    prtArray.push('- Tag Assistant with Google Tag Manager and Google Analytics in green/blue;', '- Analytics tested in Real-Time;', '- Accounts linked;')
+                }else if(gtmOn == false) {
+                    prtArray.push('- Conversion tag created on Ads', '- Ads Conversion Tracking tag set code via Global Site Tag (gtag.js);', '- Attribution Model configured as asked by SR;', '- Auto-tagging enabled')
+                }
+        }
+        if(task[i].textContent == "Ads Remarketing" || task[i].textContent == "Google Analytics Remarketing"){
+            if(gtmOn == true){
+                prtArray.push('- Remarketing tag set via Google Tag Manager;','- Tested and checked via GTM Preview Mode;','- Audience list set successfully;',
+                '- Auto-tagging enabled;','- Informed and educated the client about remarketing lists;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Remarketing tag set via Global Site Tag (gtag.js) code;','- Audience list set successfully;','- Auto-tagging enabled;','- Informed and educated the client about remarketing lists; ')
+            }
+        }
+        if(task[i].textContent == "Analytics Destination Tracking" || task[i].textContent == "Analytics Event Tracking"){
+            if(gtmOn == true){
+                prtArray.push('- Event goal tag has been created on Analytics;', '- Event goal tag set via Google Tag Manager;', '- Tested and checked via GTM Preview Mode;', '- Tested and checked in Analytics Real-Time conversion tab;', '- Conversions have been imported to Google Ads and configured as asked by SR;', '- Auto-tagging has been enabled;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Event goal tag has been created on Analytics;', '- Tested and checked in Analytics Real-Time conversion tab;', '- Conversions have been imported to Google Ads and configured as asked by SR;', '- Auto-tagging has been enabled;')
+            }
+        }
+        if(task[i].textContent == "Cross Domain Tracking"){
+            if(gtmOn == true){
+                prtArray.push('- Tag Manager have been set up in both domains;', '- Analytics and cross-domain has been set up in GTM in the Universal Analytics tag;', '- Domain names have been added in the Referral Exclusion list;', '- Ads account have been set;', '- Auto-tagging enabled;', '- Cookie information is passing through both sites during same session;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Analytics have been set up in both domains;', '- Cross-domain code has also been set up in both domains;', '- Domain names have been added in the Referral Exclusion list;', '- Ads account have been set;', '- Auto-tagging enabled;', '- Cookie information is passing through both sites during same session;')
+            }
+        }
+        if(task[i].textContent == "Google Tag Manager Installation"){
+            if(gtmOn == true){
+                prtArray.push('- Google Tag Manager has been set successfully in all the pages of the website;')
+            }
+        }
+        if(task[i].textContent == "Analytics E-Commerce Tracking" || task[i].textContent == "Analytics Enhanced E-Commerce Tracking"){
+            if(gtmOn == true){
+                prtArray.push('- Enhanced Commerce Tracking has been activated;', '- Step fields has been filled;', '- Currency field has been updated to the origin country;', '- Transactions has been imported to Ads;', '- Analytics has been set up via Google Tag Manager;', '- Test have been applied and GTM displayed the event Purchase;', '- Other events triggered have been showed on real-time Events tab;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Enhanced Commerce Tracking has been activated;', '- Step fields has been filled;', '- Currency field has been updated to the origin country;', '- Transactions has been imported to Ads;', '- Tag has been set up via code/plugin;', '- Test have been applied and Tag Assistant displayed the event Purchase;', '- Other events triggered have also been showed on real-time Events tab;')
+            }
+        } 
+        if(task[i].textContent == "Google Analytics Dynamic Remarketing (Retail)" || task[i].textContent == "Google Analytics Dynamic Remarketing (Non-Retail)"){
+            if(gtmOn == true){
+                prtArray.push('- Remarketing has been enabled in Analytics;', '- Audience list has been set up and imported to Ads;', '- Custom dimensions has been set up;', '- Products page is printing values according to Tag Assistant;', '- Codes and dimensions have been set via Google Tag Manager;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Remarketing has been enabled in Analytics;', '- Audience list has been set up and imported to Ads;', '- Custom dimensions has been set up;', '- Products page is printing values according to Tag Assistant;')
+            }
+        }
+        if(task[i].textContent == "Dynamic Remarketing - Retail" || task[i].textContent == "Dynamic Remarketing - X (Non-Retail)"){
+            if(gtmOn == true){
+                prtArray.push('- Remarketing has been set up via Google Tag Manager;', '- Audience list has been set successfully;', '- Data feed has been set up;', '- Products page is printing values according to Tag Assistant;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Remarketing has been set up via Global Site Tag (gtag.js);', '- Audience list has been set successfully;', '- Data feed has been set up;', '- Products page is printing values according to Tag Assistant;')
+            }
+        }
+        if(task[i].textContent == "Analytics"){
+            if(gtmOn == true){
+                prtArray.push('- Universal Analytics tag set via Google Tag Manager;', '- Tested and checked via GTM Preview Mode;', '- Google Ads account has been linked and metrics imported;', '- Auto-tagging enabled;', '- Real-time on Analytics tested successfully;','- Informed and educated the client about Analytics functionalities;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Universal Analytics tag set via Global Site Tag (gtag.js) code;', '- Google Ads account has been linked and metrics imported;', '- Auto-tagging enabled;', '- Real-time on Analytics tested successfully;', '- Informed and educated the client about Analytics functionalities;')
+            }            
+        }
+        if(task[i].textContent == "Website Call Conversion"){
+            if(gtmOn == true){
+                prtArray.push('- Ads Call Conversion created ;', '- Implemented the Webcall Conversion via Google Tag Manager;', '- Add and turn on the reporting for the call extensions on Ads;', '- Verificated GFN using the debug tool;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Ads Call Conversion created ;', '- Implemented the Webcall Conversion via code by Global Site Tag (gtag.js);', '- Add and turn on the reporting for the call extensions on Ads;', '- Verificated GFN using the debug tool;')
+            }            
+        }
+        if(task[i].textContent == "Offline Conversion Tracking"){
+            if(gtmOn == true){
+                prtArray.push('- Conversion has been set;', '- Cookie has been set in the Google Tag Manager;', '- Hidden field has been set to retrieve GCLID data;', '- Auto-tagging is enabled;', '- Data is imported to the sheet;', '- Advertiser has been informed that conversions must be uploaded within 90 days of the click;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Conversion has been set;', '- Cookie has been set in the code/GTM;', '- Hidden field has been set to retrieve GCLID data;', '- Auto-tagging is enabled;', '- Data is imported to the sheet;', '- Advertiser has been informed that conversions must be uploaded within 90 days of the click;')
+            }            
+        }
+        if(task[i].textContent == "Offline Conversion Tracking"){
+            if(gtmOn == true){
+                prtArray.push('- Conversion has been set;', '- Cookie has been set in the Google Tag Manager;', '- Hidden field has been set to retrieve GCLID data;', '- Auto-tagging is enabled;', '- Data is imported to the sheet;', '- Advertiser has been informed that conversions must be uploaded within 90 days of the click;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Conversion has been set;', '- Cookie has been set in the code/GTM;', '- Hidden field has been set to retrieve GCLID data;', '- Auto-tagging is enabled;', '- Data is imported to the sheet;', '- Advertiser has been informed that conversions must be uploaded within 90 days of the click;')
+            }            
+        }
+        if(task[i].textContent == "Site Wide Tag - Conversion Tracking Fix"){
+            if(gtmOn == true){
+                prtArray.push('- Conversion Linker has been tag set up in Google Tag Manager;', '- Cookies have been tested successfully by emulating Gclid access;', '- Site crawl has been applied in order to check if the whole site contains the updates;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Analytics.js has been updated to Global Site Tag (gtag.js);', '- Cookies have been tested successfully by emulating Gclid access;', '- Conversions have been updated to Global Site Tag (gtag.js);', '- Site crawl has been applied in order to check if the whole site contains the updates;')
+            }            
+        }
+        if(task[i].textContent == "Google Analytics Health Check"){
+            if(gtmOn == true){
+                prtArray.push('- Analytics goals have been checked/reviewed;', '- Remarketing has been enabled;', '- Accesses has been guaranteed to trusted users;', '- Referal exclusion list has been set;', '- Default URL has been updated to https://',
+                '- Three views per property has been recommeded as good practicies;','- View time zone and currency has been checked/review;','- Account is linked and metrics/goals were imported;','- Analytics have been imported from code to Google Tag Manager;', '- Conversions have been imported from code to Google Tag Manager;')
+            }else if(gtmOn == false) {
+                prtArray.push('- Analytics goals have been checked/reviewed;', '- Remarketing has been enabled;', '- Accesses has been guaranteed to trusted users;', '- Referal exclusion list has been set;', '- Default URL has been updated to https://', '- Three views per property has been recommeded as good practicies;', '- View time zone and currency has been checked/review;', 
+                '- Account is linked and metrics/goals were imported;')
+            }            
+        }
+    }
+
+        //build de prints obrigatórios
+    for (let i = 0; i < prtArray.length; i++) {
+        const element = prtArray[i];
+        const button = document.createElement("button");
+        const input = document.createElement("input");
+        button.setAttribute('class', 'print');
+        button.setAttribute('title', element);
+        input.setAttribute('class', 'editBtn');
+        input.setAttribute('type', 'image');
+        input.setAttribute('src', 'images/editBtn.svg');
+        input.setAttribute('printNome', element);
+        input.setAttribute('prints', '');
+        input.addEventListener('click', function(){showModal(i, true)})
+        const btnText = document.createTextNode(element);
+        divprints.insertBefore(button, divprints.childNodes[i]);
+        button.appendChild(input);
+        button.appendChild(btnText);
+        button.style.opacity = 1;
+    }
+}
+
+prints();
+
 /*
     //build de comentarios não obrigatórios
 for (let i = 0; i < cmnArray.length; i++) {
@@ -480,13 +631,10 @@ for (let i = 0; i < cmnArray.length; i++) {
 } */
 
 //Build de prints
-prtArray = ["Tag created:", "GA linked and metrics imported:", "GTM Preview:", "Auto Tagging:", "GA Real Time:"];
 prtnArray = [];
 
-var divprints = document.getElementById('divprints');
-
     //build de prints não obrigatórios
-for (let i = 0; i < prtnArray.length; i++) {
+/*for (let i = 0; i < prtnArray.length; i++) {
     const element = prtnArray[i];
     const button = document.createElement("button");
     const input = document.createElement("input");
@@ -501,26 +649,7 @@ for (let i = 0; i < prtnArray.length; i++) {
     button.appendChild(input);
     button.appendChild(btnText);
     button.style.opacity = 1;
-}
-    //build de prints obrigatórios
-for (let i = 0; i < prtArray.length; i++) {
-    const element = prtArray[i];
-    const button = document.createElement("button");
-    const input = document.createElement("input");
-    button.setAttribute('class', 'print');
-    button.setAttribute('title', element);
-    input.setAttribute('class', 'editBtn');
-    input.setAttribute('type', 'image');
-    input.setAttribute('src', 'images/editBtn.svg');
-    input.setAttribute('printNome', element);
-    input.setAttribute('prints', '');
-    input.addEventListener('click', function(){showModal(i, true)})
-    const btnText = document.createTextNode(element);
-    divprints.insertBefore(button, divprints.childNodes[i]);
-    button.appendChild(input);
-    button.appendChild(btnText);
-    button.style.opacity = 1;
-}
+}*/
 
 // adicionando prints
 document.querySelector('.addPrint').addEventListener("click", function () { 
