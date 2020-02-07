@@ -1,5 +1,3 @@
-console.log('Ed e Alefe os barões da pisadinha');
-
 //para apresentação do dia 6/2
 var estilED = document.createElement("link");
 var fontED = document.createElement("link");
@@ -9,12 +7,29 @@ estilED.setAttribute('type', 'text/css');
 estilED.setAttribute('href', 'https://dantase.sandbox.msiteproject.com/EDstension/stylEDv2.css');
 fontED.setAttribute('rel', 'stylesheet');
 fontED.setAttribute('href', 'https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-jQLib.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
 document.head.appendChild(estilED);
 document.head.appendChild(fontED);
 document.head.appendChild(jQLib);
 
-$('body').append('<input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED" onclick="abrirCorpo();"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho" onclick="fecharCorpo();"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div></div>');
+var template = document.createElement('template');
+    template.innerHTML = '<input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED" onclick="abrirCorpo();"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho" onclick="fecharCorpo();"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div></div>';
+var nodes = template.content.childNodes;
+for (var i = 0; i < nodes.length; i++) {
+    document.body.appendChild(nodes[i]);
+}
+
+var triggerEvent = (element, event) => {
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent(event, false, true);
+    element.dispatchEvent(evt);
+}
+
+var $ = (selector) => {
+    return document.querySelectorAll(selector);
+}
+var $1 = (selector) => {
+    return document.querySelector(selector);
+}
 //para apresentação do dia 6/2
 
 var cmsED = 32;
@@ -172,7 +187,11 @@ emProgresso = () => {
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("In progress").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "In progress";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 1;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -204,7 +223,11 @@ tentativaContato = () =>{
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("Attempting Contact").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "Attempting Contact";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 7;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -236,7 +259,11 @@ inativo = () => {
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("Inactive").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "Inactive";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 5;}, 1400);
     //click no campo de calendario
@@ -494,7 +521,7 @@ function geraComm() {
         const element = btnsActv[i].textContent;
         conteudoComentario = conteudoComentario + element + '\n';
     }
-    conteudoComentario = conteudoComentario + $('#addComent')[0].value;
+    conteudoComentario = conteudoComentario + $1('#addComent').value;
 }
 
 // build de prints
@@ -723,7 +750,7 @@ document.querySelector('.addPrint').addEventListener("click", function () {
 function capsulaDCP() {desativarCP(this)};
 function desativarCP(b) {
     if (b.className == 'comentario' || b.className == 'nComentario') {
-        if (b.className == 'comentario' && $('#printModal')[0].style.visibility == "hidden") {
+        if (b.className == 'comentario' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nComentario');
             b.classList.remove('comentario');
             geraComm();
@@ -735,7 +762,7 @@ function desativarCP(b) {
         }
     }
     if (b.className == 'print' || b.className == 'nPrint') {
-        if (b.className == 'print' && $('#printModal')[0].style.visibility == "hidden") {
+        if (b.className == 'print' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nPrint');
             b.classList.remove('print');
             geraPrints();
@@ -755,7 +782,7 @@ printbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
 document.querySelector('.addPrint').removeEventListener("click", capsulaDCP);*/
 
 //Modal dos prints
-$('#printModal')[0].style.visibility = "hidden";
+$1('#printModal').style.visibility = "hidden";
 let modalVisivel;
 
 //document.querySelector('#printXis').addEventListener('click', function(){showModal(0)});
@@ -764,41 +791,41 @@ document.querySelector('#printModalBG').addEventListener('click', function(){sho
 //abrir e fechar modar
 function showModal(i, obr){
 
-    modalVisivel = $('#printModal')[0].style.visibility == "hidden";
+    modalVisivel = $1('#printModal').style.visibility == "hidden";
 
 
     //exibir modal em um print obrigatório
     if(modalVisivel && obr){
         $('.print')[i].appendChild($('#printModal')[0]);
-        $('#printModal')[0].style.visibility = "visible";
-        $('#printModalBG')[0].style.visibility = "visible";
-        $('#printModal > p')[0].textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
+        $1('#printModal').style.visibility = "visible";
+        $1('#printModalBG').style.visibility = "visible";
+        $1('#printModal > p').textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
         document.querySelector('#addPrint').value = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('printCont');
     }
     //hide em um print obrigatório
     else if(obr){
-        $('#printModal')[0].style.visibility = "hidden";
-        $('#printModalBG')[0].style.visibility = "hidden";
+        $1('#printModal').style.visibility = "hidden";
+        $1('#printModalBG').style.visibility = "hidden";
     };
 
     //exibir modal em um print ñ obrigatório
     if(modalVisivel && !obr){
         $('#divprints .nObrigatorio')[i].appendChild($('#printModal')[0]);
-        $('#printModal')[0].style.visibility = "visible";
-        $('#printModalBG')[0].style.visibility = "visible";
+        $1('#printModal').style.visibility = "visible";
+        $1('#printModalBG').style.visibility = "visible";
     }
     //hide em um print ñ obrigatório
     else if(!obr){
         document.querySelector('#addPrint').parentElement.parentElement.setAttribute('printCont', document.querySelector('#addPrint').value);
         geraPrints();
-        $('#printModal')[0].style.visibility = "hidden";
-        $('#printModalBG')[0].style.visibility = "hidden";
+        $1('#printModal').style.visibility = "hidden";
+        $1('#printModalBG').style.visibility = "hidden";
     };
 
 };
 
 /*function fecharmodal() {
-    $('#taskModal')[0].style.visibility = 'hidden';
+    $1('#taskModal').style.visibility = 'hidden';
 }*/
 
 //função para colocar os prints no campo de comentário
