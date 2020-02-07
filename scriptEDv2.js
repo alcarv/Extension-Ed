@@ -1,5 +1,3 @@
-console.log('Ed e Alefe os barões da pisadinha');
-
 //para apresentação do dia 6/2
 var estilED = document.createElement("link");
 var fontED = document.createElement("link");
@@ -9,12 +7,29 @@ estilED.setAttribute('type', 'text/css');
 estilED.setAttribute('href', 'https://dantase.sandbox.msiteproject.com/EDstension/stylEDv2.css');
 fontED.setAttribute('rel', 'stylesheet');
 fontED.setAttribute('href', 'https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-jQLib.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
 document.head.appendChild(estilED);
 document.head.appendChild(fontED);
 document.head.appendChild(jQLib);
 
-$('body').append('<input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED" onclick="abrirCorpo();"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho" onclick="fecharCorpo();"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div></div>');
+var template = document.createElement('template');
+    template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED" onclick="abrirCorpo();"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho" onclick="fecharCorpo();"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div></div></span>';
+//var nodes = template.content.childNodes;
+//for (var i = 0; i < nodes.length; i++) {
+    document.body.appendChild(template.content.firstChild);
+//}
+
+var triggerEvent = (element, event) => {
+    var evt = document.createEvent("HTMLEvents");
+    evt.initEvent(event, false, true);
+    element.dispatchEvent(evt);
+}
+
+var $ = (selector) => {
+    return document.querySelectorAll(selector);
+}
+var $1 = (selector) => {
+    return document.querySelector(selector);
+}
 //para apresentação do dia 6/2
 
 var cmsED = 32;
@@ -34,75 +49,130 @@ let educatiOnly;
 let gtmOn = false;
 var conteudoComentario = '';
 var conteudoPrint = '';
-mudStatus = () =>  {
+
+const buttons = {
+    implemented: {
+        defaultState: 'inactive',
+        states: {
+            active:    'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtnAtv.svg',
+            education: 'https://dantase.sandbox.msiteproject.com/EDstension/images/educationOnlyBtn.svg',
+            inactive:   'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg'
+        }
+    },
+
+    inprogress: {
+        defaultState: 'inactive',
+        states: {
+            active:  'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtnAtv.svg',
+            inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
+        }
+    },
+
+    attemptContact: {
+        defaultState: 'inactive',
+        states: {
+            active:  'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtnAtv.svg',
+            inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg'
+        }
+    },
+
+    inactive: {
+        defaultState: 'inactive',
+        states: {
+            active:  'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtnAtv.svg',
+            inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
+        }
+    },
+
+    inactive: {
+        defaultState: 'inactive',
+        states: {
+            active:  'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtnAtv.svg',
+            inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
+        }
+    },
+
+    tagmanager: {
+        defaultState: 'inactive',
+        states: {
+            active:  'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtnAtv.svg',
+            inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg'
+        }
+    }
+
+
+};
+
+mudStatus = () => {
     let count = 0;
     imp.addEventListener('click', (event) => {
-        count ++;
-        imp.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtnAtv.svg'
-        inpro.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
-        attempt.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg'
-        inactive.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
-            if(count%2 == 0) {  
-                imp.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/educationOnlyBtn.svg'
-                inpro.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
-                attempt.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg'
-                inactive.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
+        count++;
+        imp.src = buttons.implemented.states.active
+        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+        if (count % 2 == 0) {
+            imp.src = buttons.implemented.states.education
+            inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+            attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+            inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
 
-                educatiOnly = 1;
+            educatiOnly = 1;
 
-            };
+        };
 
-            Status = 1;
+        Status = 1;
     });
     inpro.addEventListener('click', (event) => {
-        inpro.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtnAtv.svg'
-        imp.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg'
-        attempt.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg'
-        inactive.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
+        inpro.src = buttons.inprogress.states.active
+        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+        attempt.src =  buttons.attemptContact.states[buttons.attemptContact.defaultState]
+        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
 
-            Status = 2;
+        Status = 2;
     });
     attempt.addEventListener('click', (event) => {
-        attempt.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtnAtv.svg'
-        inpro.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
-        inactive.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg'
-        imp.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg'
+        attempt.src = buttons.attemptContact.states.active
+        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
 
-            Status = 3;
+        Status = 3;
     });
     inactive.addEventListener('click', (event) => {
-        inactive.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtnAtv.svg'
-        imp.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg'
-        inpro.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
-        attempt.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg'
+        inactive.src = buttons.inactive.states.active
+        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
 
-            Status = 4;
+        Status = 4;
     });
     gtmBtn.addEventListener('click', () => {
-        count ++;
-        gtmBtn.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtnAtv.svg'
+        count++;
+        gtmBtn.src = buttons.tagmanager.states.active
         gtmOn = true;
-        if(count%2 == 0) {
-            gtmBtn.src = 'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg'
+        if (count % 2 == 0) {
+            gtmBtn.src = buttons.tagmanager.states[buttons.tagmanager.defaultState]
             gtmOn = false;
         }
-    //});
-    /*tasksBtn.addEventListener('click', (event) => {
-        count ++;
-        tasksBtn.src = 'images/tasksBtnAtv.svg'
-        //show modal
-        $('#taskModal')[0].style.visibility = 'visible';
-        //show modal
-        if(count%2 == 0) {
-            tasksBtn.src = 'images/tasksBtn.svg'
-            fecharmodal();
-        }
-    });*/
+        //});
+        /*tasksBtn.addEventListener('click', (event) => {
+            count ++;
+            tasksBtn.src = 'images/tasksBtnAtv.svg'
+            //show modal
+            $('#taskModal')[0].style.visibility = 'visible';
+            //show modal
+            if(count%2 == 0) {
+                tasksBtn.src = 'images/tasksBtn.svg'
+                fecharmodal();
+            }
+        });*/
         comments(gtmOn);
         prints(gtmOn);
     });
-    
+
 };
+
 
     fogoNoBuracobtn.addEventListener('click', (event) => {
         fogoNoBuraco(Status);
@@ -123,7 +193,12 @@ implementado = () => {
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {document.getElementById('cas7').selectedIndex = 4;}, 1000);
+    //setTimeout(() => {document.getElementById('cas7').selectedIndex = 4;}, 1000);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "Implemented";
+        triggerEvent(el, 'change');
+    }, 1300);
     //clique no botão de ok da janelinha de seleção
     setTimeout(() => {document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click();}, 1250);
     //click no campo de calendario
@@ -164,7 +239,7 @@ implementado = () => {
     //seleção call transfered
     setTimeout(() => {document.getElementById('00N3600000TPihW').selectedIndex = 2;}, 3100);
 
-
+    
 };
 
 emProgresso = () => {
@@ -172,7 +247,11 @@ emProgresso = () => {
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("In progress").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "In progress";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 1;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -204,7 +283,11 @@ tentativaContato = () =>{
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("Attempting Contact").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "Attempting Contact";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 7;}, 1400);
     //clique no botão de ok da janelinha de seleção
@@ -236,7 +319,11 @@ inativo = () => {
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
-    setTimeout(() => {$('#cas7').val("Inactive").change();}, 1300);
+    setTimeout(() => {
+        let el = $1('#cas7');
+        el.value = "Inactive";
+        triggerEvent(el, 'change');
+    }, 1300);
     //seleção de sub status
     setTimeout(() => {document.getElementById('00N3600000QISAX').selectedIndex = 5;}, 1400);
     //click no campo de calendario
@@ -330,7 +417,6 @@ function clearArray(array) {
         const element = task[i];
         taskString.push(element.textContent);
     }
-
     //loop para criar o conteudo da #taskModal
     const taskModal = document.getElementById('taskModal');
     for (let i = 0; i < taskString.length; i++) {
@@ -494,7 +580,7 @@ function geraComm() {
         const element = btnsActv[i].textContent;
         conteudoComentario = conteudoComentario + element + '\n';
     }
-    conteudoComentario = conteudoComentario + $('#addComent')[0].value;
+    conteudoComentario = conteudoComentario + $1('#addComent').value;
 }
 
 // build de prints
@@ -504,11 +590,9 @@ prints = () => {
     
     /*var task = document.querySelectorAll('#tasksCase');
     var task = []
-
     const teste = document.createElement("p");
     teste.textContent = "Ads Conversion Code";
     task.push(teste);
-
     const teste2 = document.createElement("p");
     teste2.textContent = "Analytics Destination Tracking";
     task.push(teste2);*/
@@ -723,7 +807,7 @@ document.querySelector('.addPrint').addEventListener("click", function () {
 function capsulaDCP() {desativarCP(this)};
 function desativarCP(b) {
     if (b.className == 'comentario' || b.className == 'nComentario') {
-        if (b.className == 'comentario' && $('#printModal')[0].style.visibility == "hidden") {
+        if (b.className == 'comentario' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nComentario');
             b.classList.remove('comentario');
             geraComm();
@@ -735,7 +819,7 @@ function desativarCP(b) {
         }
     }
     if (b.className == 'print' || b.className == 'nPrint') {
-        if (b.className == 'print' && $('#printModal')[0].style.visibility == "hidden") {
+        if (b.className == 'print' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nPrint');
             b.classList.remove('print');
             geraPrints();
@@ -755,7 +839,7 @@ printbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
 document.querySelector('.addPrint').removeEventListener("click", capsulaDCP);*/
 
 //Modal dos prints
-$('#printModal')[0].style.visibility = "hidden";
+$1('#printModal').style.visibility = "hidden";
 let modalVisivel;
 
 //document.querySelector('#printXis').addEventListener('click', function(){showModal(0)});
@@ -764,41 +848,41 @@ document.querySelector('#printModalBG').addEventListener('click', function(){sho
 //abrir e fechar modar
 function showModal(i, obr){
 
-    modalVisivel = $('#printModal')[0].style.visibility == "hidden";
+    modalVisivel = $1('#printModal').style.visibility == "hidden";
 
 
     //exibir modal em um print obrigatório
     if(modalVisivel && obr){
         $('.print')[i].appendChild($('#printModal')[0]);
-        $('#printModal')[0].style.visibility = "visible";
-        $('#printModalBG')[0].style.visibility = "visible";
-        $('#printModal > p')[0].textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
+        $1('#printModal').style.visibility = "visible";
+        $1('#printModalBG').style.visibility = "visible";
+        $1('#printModal > p').textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
         document.querySelector('#addPrint').value = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('printCont');
     }
     //hide em um print obrigatório
     else if(obr){
-        $('#printModal')[0].style.visibility = "hidden";
-        $('#printModalBG')[0].style.visibility = "hidden";
+        $1('#printModal').style.visibility = "hidden";
+        $1('#printModalBG').style.visibility = "hidden";
     };
 
     //exibir modal em um print ñ obrigatório
     if(modalVisivel && !obr){
         $('#divprints .nObrigatorio')[i].appendChild($('#printModal')[0]);
-        $('#printModal')[0].style.visibility = "visible";
-        $('#printModalBG')[0].style.visibility = "visible";
+        $1('#printModal').style.visibility = "visible";
+        $1('#printModalBG').style.visibility = "visible";
     }
     //hide em um print ñ obrigatório
     else if(!obr){
         document.querySelector('#addPrint').parentElement.parentElement.setAttribute('printCont', document.querySelector('#addPrint').value);
         geraPrints();
-        $('#printModal')[0].style.visibility = "hidden";
-        $('#printModalBG')[0].style.visibility = "hidden";
+        $1('#printModal').style.visibility = "hidden";
+        $1('#printModalBG').style.visibility = "hidden";
     };
 
 };
 
 /*function fecharmodal() {
-    $('#taskModal')[0].style.visibility = 'hidden';
+    $1('#taskModal').style.visibility = 'hidden';
 }*/
 
 //função para colocar os prints no campo de comentário
