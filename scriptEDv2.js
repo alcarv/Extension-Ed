@@ -181,10 +181,8 @@ mudStatus = () => {
 mudStatus();
 
 implementado = () => {
-    console.log('entrou na função implementado !!')
 
     if(educatiOnly == 1){
-        console.log('Educou agora')
         //Click no campo de education Only
         setTimeout(() => {document.getElementById('00N3600000R148r_ilecell').click();}, 1000);
         //Click no checkbox Education Only
@@ -243,7 +241,6 @@ implementado = () => {
 };
 
 emProgresso = () => {
-    console.log('entrou na função emProgresso !!')
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
@@ -279,7 +276,6 @@ emProgresso = () => {
 };
 
 tentativaContato = () =>{
-    console.log('entrou na função tentativaContato !!')
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
@@ -315,7 +311,6 @@ tentativaContato = () =>{
 };
 
 inativo = () => {
-    console.log('entrou na função Inativo !!')
     //click no campo de status
     setTimeout(() => {document.getElementById('cas7_ileinner').click();}, 300);
     //seleção de status
@@ -747,6 +742,9 @@ function geraPrints() {
     conteudoPrint = '';
     let btnsActv2 = $('.print');
     for (let i = 0; i < btnsActv2.length; i++) {
+        if (btnsActv2[i].classList[1] == 'nObrigatorio') {
+            btnsActv2[i].setAttribute('title', btnsActv2[i].childNodes[1].value);
+        }
         const element = btnsActv2[i].title;
         const element2 = btnsActv2[i].getAttribute('printCont');
         conteudoPrint = conteudoPrint + element + '<br>' + element2 + '<br>';
@@ -790,17 +788,24 @@ prtnArray = [];
 document.querySelector('.addPrint').addEventListener("click", function () { 
     const button = document.createElement("button");
     const input = document.createElement("input");
-    button.setAttribute('class', 'nObrigatorio');
+    button.setAttribute('class', 'print');
+    button.classList.add('nObrigatorio');
+    button.setAttribute('printCont', '');
     input.setAttribute('class', 'editBtn');
     input.setAttribute('type', 'image');
     input.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/editBtn.svg');
-    input.addEventListener('click', function(){showModal(document.querySelectorAll('#divprints .nObrigatorio').length-1, false)})
-    const btnText = document.createTextNode("Novo Print");
+    const btnText = document.createElement("input");
+    btnText.setAttribute('type', 'text');
+    btnText.setAttribute('class', 'printText');
+    button.setAttribute('title', btnText.value);
     divprints.insertBefore(button, document.querySelector('.addPrint'));
     button.appendChild(input);
     button.appendChild(btnText);
     //button.style.opacity = 1;
+    let index = document.querySelectorAll('#divprints .nObrigatorio').length-1;
+    input.addEventListener('click', function(){showModal(index, false)});
     button.addEventListener("click", capsulaDCP);
+    btnText.addEventListener('click', e => e.stopPropagation());
 });
 
 //desativando botões de comentario e prints
@@ -818,7 +823,21 @@ function desativarCP(b) {
             geraComm();
         }
     }
-    if (b.className == 'print' || b.className == 'nPrint') {
+    else if (b.classList[1] == 'nObrigatorio' || b.classList[0] == 'iNObrigatorio') {
+        if (b.classList[1] == 'nObrigatorio' && $1('#printModal').style.visibility == "hidden") {
+            b.classList.remove('print');
+            b.classList.add('iNObrigatorio');
+            b.classList.remove('nObrigatorio');
+            geraPrints();
+        }
+        else{
+            b.classList.add('print');
+            b.classList.add('nObrigatorio');
+            b.classList.remove('iNObrigatorio');
+            geraPrints();
+        }
+    }
+    else if (b.className == 'print' || b.className == 'nPrint') {
         if (b.className == 'print' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nPrint');
             b.classList.remove('print');
@@ -853,23 +872,29 @@ function showModal(i, obr){
 
     //exibir modal em um print obrigatório
     if(modalVisivel && obr){
-        $('.print')[i].appendChild($('#printModal')[0]);
+        $('.print')[i].appendChild($1('#printModal'));
         $1('#printModal').style.visibility = "visible";
         $1('#printModalBG').style.visibility = "visible";
         $1('#printModal > p').textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
-        document.querySelector('#addPrint').value = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('printCont');
+        $1('#addPrint').value = $1('#addPrint').parentElement.parentElement.getAttribute('printCont');
     }
     //hide em um print obrigatório
     else if(obr){
+        document.querySelector('#addPrint').parentElement.parentElement.setAttribute('printCont', document.querySelector('#addPrint').value);
+        geraPrints();
         $1('#printModal').style.visibility = "hidden";
         $1('#printModalBG').style.visibility = "hidden";
+        document.body.appendChild($1('#printModal'));
     };
 
     //exibir modal em um print ñ obrigatório
     if(modalVisivel && !obr){
-        $('#divprints .nObrigatorio')[i].appendChild($('#printModal')[0]);
+        $('#divprints .nObrigatorio')[i].appendChild($1('#printModal'));
+        $('#divprints .nObrigatorio')[i].setAttribute('title', $('#divprints .nObrigatorio')[i].childNodes[1].value);
         $1('#printModal').style.visibility = "visible";
         $1('#printModalBG').style.visibility = "visible";
+        $1('#printModal > p').textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
+        $1('#addPrint').value = $1('#addPrint').parentElement.parentElement.getAttribute('printCont');
     }
     //hide em um print ñ obrigatório
     else if(!obr){
@@ -877,6 +902,7 @@ function showModal(i, obr){
         geraPrints();
         $1('#printModal').style.visibility = "hidden";
         $1('#printModalBG').style.visibility = "hidden";
+        document.body.appendChild($1('#printModal'));
     };
 
 };
