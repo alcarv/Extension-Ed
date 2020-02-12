@@ -416,6 +416,26 @@ input:focus{
     text-decoration: none;
     color: black;
 }
+
+
+#feedback {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    opacity: 0.2;
+    font-weight: 600;
+    transition: 1s ease;
+}
+
+#feedback:hover{
+    opacity: 1;
+}
+
+#feedback a{
+    text-decoration: none;
+    color: black;
+}
+
 .qualTask{
     white-space: nowrap;
     overflow:hidden !important;

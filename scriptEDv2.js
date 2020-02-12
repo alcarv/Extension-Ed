@@ -1,4 +1,4 @@
-//para apresentação do dia 6/2
+
 var estilED = document.createElement("link");
 var fontED = document.createElement("link");
 var jQLib = document.createElement("script");
@@ -379,7 +379,7 @@ fogoNoBuraco = () => {
 };
 
 //função para eliminar elementos repeditos de uma array
-function clearArray(array) {
+clearArray = (array) => {
     //olha cada elemento da array
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
@@ -563,12 +563,12 @@ comments = () => {
     }
 
     let comentbtns = document.querySelectorAll('#divcomentarios button');
-    comentbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
+    comentbtns.forEach((e) => { e.addEventListener("click", capsulaDCP)});
 }
 
 comments();
 
-function geraComm() {
+ geraComm = () => {
     conteudoComentario = '';
     let btnsActv = $('.comentario');
     for (let i = 0; i < btnsActv.length; i++) {
@@ -723,7 +723,7 @@ prints = () => {
         input.setAttribute('type', 'image');
         input.setAttribute('src', 'https://dantase.sandbox.msiteproject.com/EDstension/images/editBtn.svg');
         input.setAttribute('prints', '');
-        input.addEventListener('click', function(){showModal(i, true)})
+        input.addEventListener('click', () => {showModal(i, true)})
         const btnText = document.createTextNode(element);
         divprints.insertBefore(button, divprints.childNodes[i]);
         button.appendChild(input);
@@ -732,13 +732,13 @@ prints = () => {
     }
 
     let printbtns = document.querySelectorAll('#divprints button');
-    printbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
+    printbtns.forEach((e) => { e.addEventListener("click", capsulaDCP)});
     document.querySelector('.addPrint').removeEventListener("click", capsulaDCP);
 }
 
 prints();
 
-function geraPrints() {
+geraPrints = () => {
     conteudoPrint = '';
     let btnsActv2 = $('.print');
     for (let i = 0; i < btnsActv2.length; i++) {
@@ -785,7 +785,7 @@ prtnArray = [];
 }*/
 
 // adicionando prints
-document.querySelector('.addPrint').addEventListener("click", function () { 
+document.querySelector('.addPrint').addEventListener("click", () => { 
     const button = document.createElement("button");
     const input = document.createElement("input");
     button.setAttribute('class', 'print');
@@ -803,14 +803,14 @@ document.querySelector('.addPrint').addEventListener("click", function () {
     button.appendChild(btnText);
     //button.style.opacity = 1;
     let index = document.querySelectorAll('#divprints .nObrigatorio').length-1;
-    input.addEventListener('click', function(){showModal(index, false)});
+    input.addEventListener('click', () => {showModal(index, false)});
     button.addEventListener("click", capsulaDCP);
     btnText.addEventListener('click', e => e.stopPropagation());
 });
 
 //desativando botões de comentario e prints
-function capsulaDCP() {desativarCP(this)};
-function desativarCP(b) {
+var capsulaDCP = () => {desativarCP(this)};
+ desativarCP = (b) => {
     if (b.className == 'comentario' || b.className == 'nComentario') {
         if (b.className == 'comentario' && $1('#printModal').style.visibility == "hidden") {
             b.classList.add('nComentario');
@@ -862,10 +862,10 @@ $1('#printModal').style.visibility = "hidden";
 let modalVisivel;
 
 //document.querySelector('#printXis').addEventListener('click', function(){showModal(0)});
-document.querySelector('#printModalBG').addEventListener('click', function(){showModal(0)});
+document.querySelector('#printModalBG').addEventListener('click', () => {showModal(0)});
 
 //abrir e fechar modar
-function showModal(i, obr){
+ showModal = (i, obr) => {
 
     modalVisivel = $1('#printModal').style.visibility == "hidden";
 
@@ -912,7 +912,7 @@ function showModal(i, obr){
 }*/
 
 //função para colocar os prints no campo de comentário
-function attPrints(){
+ attPrints = () => {
     document.querySelector('#publisherAttachTextPost').click();
     setTimeout(() => {
     document.querySelector('iframe').contentWindow.document.body.classList.remove('placeholder');
@@ -920,12 +920,12 @@ function attPrints(){
     }, 1000);
 }
 
-function abrirCorpo(){
+ abrirCorpo = () => {
     document.getElementById('miniED').style.visibility = 'hidden';
     document.getElementById('corpo').style.visibility = 'visible';
 }
 
-function fecharCorpo(){
+ fecharCorpo = () => {
     document.getElementById('corpo').style.visibility = 'hidden';
     document.getElementById('miniED').style.visibility = 'visible'; 
 
