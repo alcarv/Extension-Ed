@@ -130,7 +130,10 @@ for (let i = 0; i < teste.length; i++) {
 
                     educatiOnly = 1;
 
-                };
+                }
+                else {
+                    educatiOnly = 0;
+                }
 
                 Status = 1;
             });
@@ -194,20 +197,20 @@ for (let i = 0; i < teste.length; i++) {
         implementado = () => {
 
             //click no campo de status
-            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 500);
+            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 1000);
             //seleção de status
             //setTimeout(() => {document.getElementById('cas7').selectedIndex = 4;}, 1000);
             setTimeout(() => {
                 let el = $1('#cas7');
                 el.value = "Implemented";
                 triggerEvent(el, 'change');
-            }, 1300);
+            }, 1200);
 
             if (educatiOnly == 1) {
                 //Click no campo de education Only
-                setTimeout(() => { document.getElementById('00N3600000R148r_ilecell').click(); }, 1000);
+                setTimeout(() => { document.getElementById('00N3600000R148r_ileinner').click(); }, 500);
                 //Click no checkbox Education Only
-                setTimeout(() => { document.getElementById('00N3600000R148r').click(); }, 500);
+                setTimeout(() => { document.getElementById('00N3600000R148r').click(); }, 700);
             };
             //clique no botão de ok da janelinha de seleção
             setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1250);
@@ -821,7 +824,7 @@ for (let i = 0; i < teste.length; i++) {
         });
 
         //desativando botões de comentario e prints
-        var capsulaDCP = () => { desativarCP(this) };
+        function capsulaDCP(){ desativarCP(this) };
         desativarCP = (b) => {
             if (b.className == 'comentario' || b.className == 'nComentario') {
                 if (b.className == 'comentario' && $1('#printModal').style.visibility == "hidden") {
