@@ -15,7 +15,7 @@ for (let i = 0; i < teste.length; i++) {
         document.head.appendChild(estilED);
         document.head.appendChild(fontED);
         var template = document.createElement('template');
-        template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div></div></span> <div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div>';
+        template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div><div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div></div></span>';
         //var nodes = template.content.childNodes;
         //for (var i = 0; i < nodes.length; i++) {
         document.body.appendChild(template.content.firstChild);
@@ -83,10 +83,10 @@ for (let i = 0; i < teste.length; i++) {
 
             inprogress: {
                 defaultState: 'inactive',
-                states: {
-                    active: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtnAtv.svg',
-                    inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
-                }
+                    states: {
+                        active: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtnAtv.svg',
+                        inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg'
+                    }
             },
 
             attemptContact: {
@@ -119,9 +119,9 @@ for (let i = 0; i < teste.length; i++) {
                     active: 'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtnAtv.svg',
                     inactive: 'https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg'
                 }
-            }
+            },
 
-
+            Status: 0
         };
 
         mudStatus = () => {
@@ -145,29 +145,65 @@ for (let i = 0; i < teste.length; i++) {
                     educatiOnly = 0;
                 }
 
+                if(count > 2){
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                    imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                    buttons.Status
+                    count = 0
+                }
+
                 Status = 1;
             });
             inpro.addEventListener('click', (event) => {
+                count++;
                 inpro.src = buttons.inprogress.states.active
                 imp.src = buttons.implemented.states[buttons.implemented.defaultState]
                 attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
                 inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                if (count % 2 == 0) {
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                    imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+
+                    buttons.Status
+                }
 
                 Status = 2;
             });
             attempt.addEventListener('click', (event) => {
+                count++;
                 attempt.src = buttons.attemptContact.states.active
                 inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                 inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
                 imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                if (count % 2 == 0) {
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                    imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+
+                    buttons.Status
+                }
 
                 Status = 3;
             });
             inactive.addEventListener('click', (event) => {
+                count++;
                 inactive.src = buttons.inactive.states.active
                 imp.src = buttons.implemented.states[buttons.implemented.defaultState]
                 inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                 attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                if (count % 2 == 0) {
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                    imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+
+                    buttons.Status
+                }
 
                 Status = 4;
             });
