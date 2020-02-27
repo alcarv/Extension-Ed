@@ -20,12 +20,22 @@ for (let i = 0; i < teste.length; i++) {
         //for (var i = 0; i < nodes.length; i++) {
         document.body.appendChild(template.content.firstChild);
         //}
+        
+        let clickFn = (selector) => {
+            document.getElementById(selector).dispatchEvent(doubleclick);
+        }
 
         var triggerEvent = (element, event) => {
             var evt = document.createEvent("HTMLEvents");
             evt.initEvent(event, false, true);
             element.dispatchEvent(evt);
         }
+
+        var doubleclick = new MouseEvent('dblclick', {
+            'view': window,
+            'bubbles': true,
+            'cancelable': true
+          });
 
         var $ = (selector) => {
             return document.querySelectorAll(selector);
@@ -197,67 +207,67 @@ for (let i = 0; i < teste.length; i++) {
         implementado = () => {
 
             //click no campo de status
-            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 1000);
+            setTimeout(() => { clickFn('cas7_ileinner'); }, 1000);
             //seleção de status
             //setTimeout(() => {document.getElementById('cas7').selectedIndex = 4;}, 1000);
             setTimeout(() => {
                 let el = $1('#cas7');
                 el.value = "Implemented";
                 triggerEvent(el, 'change');
-            }, 1200);
+            }, 1400);
 
             if (educatiOnly == 1) {
                 //Click no campo de education Only
-                setTimeout(() => { document.getElementById('00N3600000R148r_ileinner').click(); }, 500);
+                setTimeout(() => { clickFn('00N3600000R148r_ileinner'); }, 500);
                 //Click no checkbox Education Only
-                setTimeout(() => { document.getElementById('00N3600000R148r').click(); }, 700);
+                setTimeout(() => { document.getElementById('00N3600000R148r').click(); }, 750);
             };
             //clique no botão de ok da janelinha de seleção
-            setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1250);
+            setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
             //click no campo de calendario
-            setTimeout(() => { document.getElementById('00N3600000QIS9O_ileinner').click(); }, 1300);
-            setTimeout(() => { document.getElementById('00N3600000QIS9O').click(); }, 1400);
+            setTimeout(() => { clickFn('00N3600000QIS9O_ileinner'); }, 1700);
+            setTimeout(() => { document.getElementById('00N3600000QIS9O').click(); }, 1800);
             //click no campo de seleção da data de hoje
-            setTimeout(() => { document.querySelector('#datePicker > div.calBody > div > a').click(); }, 1500);
+            setTimeout(() => { clickFn('#datePicker > div.calBody > div > a'); }, 1900);
             //click no campo campanha criada
-            setTimeout(() => { document.getElementById('00N3600000QIS8U_ileinner').click(); }, 1600);
+            setTimeout(() => { clickFn('00N3600000QIS8U_ileinner'); }, 2000);
             //seleção de status
-            setTimeout(() => { document.getElementById('00N3600000QIS8U').selectedIndex = 1; }, 1700);
+            setTimeout(() => { document.getElementById('00N3600000QIS8U').selectedIndex = 1; }, 2100);
             //click no campo de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9_ileinner').click(); }, 1800);
+            setTimeout(() => { clickFn('00N3600000QISC9_ileinner'); }, 2200);
             //seleção de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 1900);
+            setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 2300);
             //click no screenshare
-            setTimeout(() => { document.getElementById('00N3600000QISDL_ileinner').click(); }, 2000);
+            setTimeout(() => { clickFn('00N3600000QISDL_ileinner'); }, 2400);
             //seleção screenshare
-            setTimeout(() => { document.getElementById('00N3600000QISDL').selectedIndex = scshED; }, 2100);
+            setTimeout(() => { document.getElementById('00N3600000QISDL').selectedIndex = scshED; }, 2500);
             //click no mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa_ileinner').click(); }, 2200);
+            setTimeout(() => { clickFn('00N3600000QISBa_ileinner'); }, 2600);
             //seleção mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2300);
+            setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2700);
             //click no ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x_ileinner').click(); }, 2400);
+            setTimeout(() => { clickFn('00N3600000QIS7x_ileinner'); }, 2800);
             //seleção ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2500);
-            //click no confirmation
+            setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2900);
+            /*click no confirmation
             setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').click(); }, 2600);
             //seleção do confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2700);
+            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2700);*/
             //click call transfered
-            setTimeout(() => { document.getElementById('00N3600000TPihX_ileinner').click(); }, 2800);
+            setTimeout(() => { clickFn('00N3600000TPihX_ileinner'); }, 3000);
             //seleção call transfered
-            setTimeout(() => { document.getElementById('00N3600000TPihX').selectedIndex = 1; }, 2900);
+            setTimeout(() => { document.getElementById('00N3600000TPihX').selectedIndex = 1; }, 3100);
             //click call transfered
-            setTimeout(() => { document.getElementById('00N3600000TPihW_ileinner').click(); }, 3000);
+            setTimeout(() => { clickFn('00N3600000TPihW_ileinner'); }, 3200);
             //seleção call transfered
-            setTimeout(() => { document.getElementById('00N3600000TPihW').selectedIndex = 2; }, 3100);
+            setTimeout(() => { document.getElementById('00N3600000TPihW').selectedIndex = 2; }, 3350);
 
 
         };
 
         emProgresso = () => {
             //click no campo de status
-            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 300);
+            setTimeout(() => { clickFn('cas7_ileinner'); }, 300);
             //seleção de status
             setTimeout(() => {
                 let el = $1('#cas7');
@@ -267,32 +277,32 @@ for (let i = 0; i < teste.length; i++) {
             //seleção de sub status
             setTimeout(() => { document.getElementById('00N3600000QISAX').selectedIndex = 1; }, 1400);
             //clique no botão de ok da janelinha de seleção
-            setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
+            setTimeout(() => { clickFn('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
             //click no campo campanha criada
-            setTimeout(() => { document.getElementById('00N3600000QIS8U_ileinner').click(); }, 1600);
+            setTimeout(() => { clickFn('00N3600000QIS8U_ileinner'); }, 1600);
             //seleção campo campanha criada
             setTimeout(() => { document.getElementById('00N3600000QIS8U').selectedIndex = 1; }, 1700);
             //click no campo de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9_ileinner').click(); }, 1800);
+            setTimeout(() => { clickFn('00N3600000QISC9_ileinner'); }, 1800);
             //seleção de cms
             setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 1900);
             //click no mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa_ileinner').click(); }, 2000);
+            setTimeout(() => { clickFn('00N3600000QISBa_ileinner'); }, 2000);
             //seleção mouse control
             setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2100);
             //click no ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x_ileinner').click(); }, 2200);
+            setTimeout(() => { clickFn('00N3600000QIS7x_ileinner'); }, 2200);
             //seleção ads CID
             setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2300);
-            //click no confirmation
+            /*click no confirmation
             setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').click(); }, 2400);
             //seleção do confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2500);
+            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2500);*/
         };
 
         tentativaContato = () => {
             //click no campo de status
-            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 300);
+            setTimeout(() => { clickFn('cas7_ileinner'); }, 300);
             //seleção de status
             setTimeout(() => {
                 let el = $1('#cas7');
@@ -304,30 +314,30 @@ for (let i = 0; i < teste.length; i++) {
             //clique no botão de ok da janelinha de seleção
             setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
             //click no campo campanha criada
-            setTimeout(() => { document.getElementById('00N3600000QIS8U_ileinner').click(); }, 1600);
+            setTimeout(() => { clickFn('00N3600000QIS8U_ileinner'); }, 1600);
             //seleção campo campanha criada
             setTimeout(() => { document.getElementById('00N3600000QIS8U').selectedIndex = 1; }, 1700);
             //click no campo de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9_ileinner').click(); }, 1800);
+            setTimeout(() => { clickFn('00N3600000QISC9_ileinner'); }, 1800);
             //seleção de cms
             setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 1900);
             //click no mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa_ileinner').click(); }, 2000);
+            setTimeout(() => { clickFn('00N3600000QISBa_ileinner'); }, 2000);
             //seleção mouse control
             setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2100);
             //click no ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x_ileinner').click(); }, 2200);
+            setTimeout(() => { clickFn('00N3600000QIS7x_ileinner'); }, 2200);
             //seleção ads CID
             setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2300);
-            //click no confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').click(); }, 2400);
+            /*click no confirmation
+            setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').dispatchEvent(doubleclick); }, 2400);
             //seleção do confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2500);
+            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2500);*/
         };
 
         inativo = () => {
             //click no campo de status
-            setTimeout(() => { document.getElementById('cas7_ileinner').click(); }, 300);
+            setTimeout(() => { clickFn('cas7_ileinner'); }, 300);
             //seleção de status
             setTimeout(() => {
                 let el = $1('#cas7');
@@ -336,32 +346,34 @@ for (let i = 0; i < teste.length; i++) {
             }, 1300);
             //seleção de sub status
             setTimeout(() => { document.getElementById('00N3600000QISAX').selectedIndex = 5; }, 1400);
-            //click no campo de calendario
-            setTimeout(() => { document.getElementById('00N3600000QIS9Q_ileinner').click(); }, 1500);
-            //click no campo de seleção da data de hoje
-            setTimeout(() => { document.querySelector('#datePicker > div.calBody > div > a').click(); }, 1600);
             //clique no botão de ok da janelinha de seleção
-            setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1700);
+            setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
+            //click no campo de calendario
+            setTimeout(() => { document.getElementById('00N3600000QIS9Q_ileinner').dispatchEvent(doubleclick); }, 1600);
+            //click no input
+            setTimeout(() => { document.getElementById('00N3600000QIS9Q').click(); }, 1650);
+            //click no campo de seleção da data de hoje
+            setTimeout(() => { document.querySelector('#datePicker > div.calBody > div > a').click(); }, 1750);
             //click no campo campanha criada
-            setTimeout(() => { document.getElementById('00N3600000QIS8U_ileinner').click(); }, 1800);
+            setTimeout(() => { document.getElementById('00N3600000QIS8U_ileinner').dispatchEvent(doubleclick); }, 1800);
             //seleção campo campanha criada
             setTimeout(() => { document.getElementById('00N3600000QIS8U').selectedIndex = 1; }, 1900);
             //click no campo de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9_ileinner').click(); }, 2000);
+            setTimeout(() => { document.getElementById('00N3600000QISC9_ileinner').dispatchEvent(doubleclick); }, 2100);
             //seleção de cms
-            setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 2100);
+            setTimeout(() => { document.getElementById('00N3600000QISC9').selectedIndex = cmsED; }, 2200);
             //click no mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa_ileinner').click(); }, 2200);
+            setTimeout(() => { document.getElementById('00N3600000QISBa_ileinner').dispatchEvent(doubleclick); }, 2300);
             //seleção mouse control
-            setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2300);
+            setTimeout(() => { document.getElementById('00N3600000QISBa').selectedIndex = 2; }, 2400);
             //click no ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x_ileinner').click(); }, 2400);
+            setTimeout(() => { document.getElementById('00N3600000QIS7x_ileinner').dispatchEvent(doubleclick); }, 2500);
             //seleção ads CID
-            setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2500);
-            //click no confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').click(); }, 2600);
+            setTimeout(() => { document.getElementById('00N3600000QIS7x').selectedIndex = 2; }, 2600);
+            /*click no confirmation
+            setTimeout(() => { document.getElementById('00N3600000SMHzO_ileinner').dispatchEvent(doubleclick); }, 2600);
             //seleção do confirmation
-            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2700);
+            setTimeout(() => { document.getElementById('00N3600000SMHzO').selectedIndex = cnftED; }, 2700);*/
         };
 
 
@@ -370,7 +382,7 @@ for (let i = 0; i < teste.length; i++) {
             geraPrints();
             if (conteudoComentario != '') {
                 //click no campo de comments
-                document.getElementById('00N3600000QISAH_ileinner').click();
+                document.querySelector("#\\30 0N3600000QISAH_ilecell").dispatchEvent(doubleclick);
                 //atribuição na caixa de comentarios
                 document.getElementById('00N3600000QISAH').value = conteudoComentario;
                 // click no botão OK de comments
@@ -970,8 +982,3 @@ for (let i = 0; i < teste.length; i++) {
     /*setTimeout(teste, 3500) */
 
 }
-
-
-
-
-
