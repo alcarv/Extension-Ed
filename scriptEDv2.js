@@ -15,7 +15,7 @@ for (let i = 0; i < teste.length; i++) {
         document.head.appendChild(estilED);
         document.head.appendChild(fontED);
         var template = document.createElement('template');
-        template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrint">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div><div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div></div></span>';
+        template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrt">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div><div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div></div></span>';
         //var nodes = template.content.childNodes;
         //for (var i = 0; i < nodes.length; i++) {
         document.body.appendChild(template.content.firstChild);
@@ -662,7 +662,7 @@ for (let i = 0; i < teste.length; i++) {
 
             botoes = document.querySelectorAll('#divprints button');
             for (let i = 0; i < botoes.length; i++) {
-                if (botoes[i].className != 'addPrint') {
+                if (botoes[i].className != 'addPrt') {
                     botoes[i].remove();
 
                 }
@@ -799,7 +799,7 @@ for (let i = 0; i < teste.length; i++) {
 
             let printbtns = document.querySelectorAll('#divprints button');
             printbtns.forEach((e) => { e.addEventListener("click", capsulaDCP) });
-            document.querySelector('.addPrint').removeEventListener("click", capsulaDCP);
+            document.querySelector('.addPrt').removeEventListener("click", capsulaDCP);
         }
 
         prints();
@@ -813,7 +813,7 @@ for (let i = 0; i < teste.length; i++) {
                 }
                 const element = btnsActv2[i].title;
                 const element2 = btnsActv2[i].getAttribute('printCont');
-                conteudoPrint = conteudoPrint + element + '<br>' + element2 + '<br>';
+                conteudoPrint = conteudoPrint + '<p>' + element + '</p>' + '<p>' + element2 + '</p>';
             }
         }
 
@@ -851,7 +851,7 @@ for (let i = 0; i < teste.length; i++) {
         }*/
 
         // adicionando prints
-        document.querySelector('.addPrint').addEventListener("click", () => {
+        document.querySelector('.addPrt').addEventListener("click", () => {
             const button = document.createElement("button");
             const input = document.createElement("input");
             button.setAttribute('class', 'print');
@@ -864,7 +864,7 @@ for (let i = 0; i < teste.length; i++) {
             btnText.setAttribute('type', 'text');
             btnText.setAttribute('class', 'printText');
             button.setAttribute('title', btnText.value);
-            divprints.insertBefore(button, document.querySelector('.addPrint'));
+            divprints.insertBefore(button, document.querySelector('.addPrt'));
             button.appendChild(input);
             button.appendChild(btnText);
             //button.style.opacity = 1;
@@ -921,7 +921,7 @@ for (let i = 0; i < teste.length; i++) {
         let printbtns = document.querySelectorAll('#divprints button');
         comentbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
         printbtns.forEach(function(e){ e.addEventListener("click", capsulaDCP)});
-        document.querySelector('.addPrint').removeEventListener("click", capsulaDCP);*/
+        document.querySelector('.addPrt').removeEventListener("click", capsulaDCP);*/
 
         //Modal dos prints
         $1('#printModal').style.visibility = "hidden";
@@ -938,7 +938,7 @@ for (let i = 0; i < teste.length; i++) {
 
             //exibir modal em um print obrigatório
             if (modalVisivel && obr) {
-                $('.print')[i].appendChild($1('#printModal'));
+                $('button[class*="rint"]')[i].appendChild($1('#printModal'));
                 $1('#printModal').style.visibility = "visible";
                 $1('#printModalBG').style.visibility = "visible";
                 $1('#printModal > p').textContent = document.querySelector('#addPrint').parentElement.parentElement.getAttribute('title');
