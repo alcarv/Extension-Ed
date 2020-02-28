@@ -121,7 +121,6 @@ for (let i = 0; i < teste.length; i++) {
                 }
             },
 
-            Status: 0
         };
 
         mudStatus = () => {
@@ -145,6 +144,10 @@ for (let i = 0; i < teste.length; i++) {
                     educatiOnly = 0;
                 }
 
+                Status = 1;
+                
+                console.log(Status)
+
                 if(count > 2){
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
@@ -152,9 +155,9 @@ for (let i = 0; i < teste.length; i++) {
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
                     buttons.Status
                     count = 0
+                    Status = 0
                 }
 
-                Status = 1;
             });
             inpro.addEventListener('click', (event) => {
                 count++;
@@ -168,7 +171,7 @@ for (let i = 0; i < teste.length; i++) {
                     attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
 
-                    buttons.Status
+                    Status = 0
                 }
 
                 Status = 2;
@@ -185,7 +188,7 @@ for (let i = 0; i < teste.length; i++) {
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
 
-                    buttons.Status
+                    Status = 0
                 }
 
                 Status = 3;
@@ -202,7 +205,7 @@ for (let i = 0; i < teste.length; i++) {
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
 
-                    buttons.Status
+                    Status = 0
                 }
 
                 Status = 4;
@@ -980,7 +983,8 @@ for (let i = 0; i < teste.length; i++) {
             setTimeout(() => {
                 document.querySelector('iframe').contentWindow.document.body.classList.remove('placeholder');
                 document.querySelector('iframe').contentWindow.document.body.innerHTML = conteudoPrint;
-            }, 1000);
+                document.getElementById('publishersharebutton').click()
+            }, 1000); 
         }
 
         abrirCorpo = () => {
