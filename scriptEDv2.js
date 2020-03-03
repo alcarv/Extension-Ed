@@ -265,9 +265,8 @@ for (let i = 0; i < teste.length; i++) {
             setTimeout(() => { document.querySelector('#InlineEditDialog_buttons > input:nth-child(1)').click(); }, 1500);
             //click no campo de calendario
             setTimeout(() => { clickFn('00N3600000QIS9O_ileinner'); }, 1700);
-            setTimeout(() => { document.getElementById('00N3600000QIS9O').click(); }, 1800);
             //click no campo de seleção da data de hoje
-            setTimeout(() => { clickFn('#datePicker > div.calBody > div > a'); }, 1900);
+            setTimeout(() => { document.querySelector('#datePicker > div.calBody > div > a').click(); }, 1900);
             //click no campo campanha criada
             setTimeout(() => { clickFn('00N3600000QIS8U_ileinner'); }, 2000);
             //seleção de status
@@ -979,12 +978,14 @@ for (let i = 0; i < teste.length; i++) {
 
         //função para colocar os prints no campo de comentário
         attPrints = () => {
-            document.querySelector('#publisherAttachTextPost').click();
-            setTimeout(() => {
-                document.querySelector('iframe').contentWindow.document.body.classList.remove('placeholder');
-                document.querySelector('iframe').contentWindow.document.body.innerHTML = conteudoPrint;
-                document.getElementById('publishersharebutton').click()
-            }, 1000); 
+            if (conteudoPrint != '') {
+                document.querySelector('#publisherAttachTextPost').click();
+                setTimeout(() => {
+                    document.querySelector('iframe').contentWindow.document.body.classList.remove('placeholder');
+                    document.querySelector('iframe').contentWindow.document.body.innerHTML = conteudoPrint;
+                    document.getElementById('publishersharebutton').click()
+                }, 1000);
+            }
         }
 
         abrirCorpo = () => {
