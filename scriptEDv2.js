@@ -146,8 +146,6 @@ for (let i = 0; i < teste.length; i++) {
 
                 Status = 1;
                 
-                console.log(Status)
-
                 if(count > 2){
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
@@ -157,7 +155,9 @@ for (let i = 0; i < teste.length; i++) {
                     count = 0
                     Status = 0
                 }
-
+                
+             comments(Status);
+             prints(Status);
             });
             inpro.addEventListener('click', (event) => {
                 count++;
@@ -614,6 +614,11 @@ for (let i = 0; i < teste.length; i++) {
             }
             clearArray(cmArray);
 
+            
+            if(Status === 0 || Status == undefined) {
+                cmArray = [];
+            }
+
             //build de comentarios obrigatórios
             for (let i = 0; i < cmArray.length; i++) {
                 const element = cmArray[i];
@@ -629,9 +634,9 @@ for (let i = 0; i < teste.length; i++) {
 
             let comentbtns = document.querySelectorAll('#divcomentarios button');
             comentbtns.forEach((e) => { e.addEventListener("click", capsulaDCP) });
+
         }
 
-        comments();
 
         geraComm = () => {
             conteudoComentario = '';
@@ -776,6 +781,10 @@ for (let i = 0; i < teste.length; i++) {
             }
             clearArray(prtArray);
 
+            if(Status === 0 || Status == undefined) {
+                prtArray = [];
+            }
+
             //build de prints obrigatórios
             for (let i = 0; i < prtArray.length; i++) {
                 const element = prtArray[i];
@@ -801,7 +810,6 @@ for (let i = 0; i < teste.length; i++) {
             document.querySelector('.addPrt').removeEventListener("click", capsulaDCP);
         }
 
-        prints();
 
         geraPrints = () => {
             conteudoPrint = '';
