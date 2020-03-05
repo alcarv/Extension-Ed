@@ -81,3 +81,34 @@
     <script src="scriptEDv2.js"></script>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {    
+        //whatas
+        var btnswpp = document.querySelectorAll("a[href*='web.whatsapp']");
+        btnswpp.forEach(function(e){ e.addEventListener("click", function(e) { 
+            gtag('event', 'conversion', {'send_to': 'AW-691922206/cLllCLidmLoBEJ7K98kC'});
+        });
+        });
+    });
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64434544-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64434544-2');
+  gtag('config', 'AW-992240002');
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {    
+        document.querySelector("#simuleform").addEventListener("submit", function(e) { 
+            gtag('event', enviar, {
+            'event_category': botao
+            });
+        });
+    });
+</script>
