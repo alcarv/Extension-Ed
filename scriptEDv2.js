@@ -19,7 +19,7 @@ if (isCasePage) {
             document.head.appendChild(estilED);
             document.head.appendChild(fontED);
             var template = document.createElement('template');
-            template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"></div><div id="botoesSec">    <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrt">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div><div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div></div></span>';
+            template.innerHTML = '<span><input type="image" name="miniED" src="https://dantase.sandbox.msiteproject.com/EDstension/images/miniBG.png" id="miniED"><div id="corpo"><input type="image" name="xizinho" src="https://dantase.sandbox.msiteproject.com/EDstension/images/closeBtn.svg" id="xizinho"><input type="image" name="logo" src="https://dantase.sandbox.msiteproject.com/EDstension/images/logoWebTech.svg" id="logo"><div id="botoesPrin">  <div class="tooltip">  <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/implementedBtn.svg" id="imp"> <span class="tooltiptext">Implemented</span> </div> <div class="tooltip"> <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inProgressBtn.svg" id="inpro"> <span class="tooltiptext">In Progress</span>  </div>   <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/onCallVAz.svg" id="oncall">     <div class="tooltip"> <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/attemptContactBtn.svg" id="attempt"> <span class="tooltiptext">Attempt Contact</span>  </div>  <div class="tooltip"> <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/inactiveBtn.svg" id="inactive"> <span class="tooltiptext">Inactive</span> </div> </div><div id="botoesSec">  <div class="tooltip">  <input type="image" src="https://dantase.sandbox.msiteproject.com/EDstension/images/gtmBtn.svg" id="gtmBtn"> <span class="tooltiptext">GTM</span> </div></div><div id="divcomentarios">    <textarea name="addComent" id="addComent" cols="30" rows="10"></textarea></div><div id="divprints">    <div id="printModal">        <p>printName</p>        <textarea name="addPrint" id="addPrint" cols="30" rows="10"></textarea>            </div>    <button class="addPrt">+</button></div><div id="printModalBG" class="modal"></div><div class="clearMan"></div><button type="button" id="fogonoburaco">Fill</button><div class="clearMan"></div><div id="sign">    <a id="danta" href="https://moma.corp.google.com/person/dantase@google.com" target="_blank">@dantase</a> <a id="ale" href="https://moma.corp.google.com/person/alefe@google.com" target="_blank">@alefe</a></div><div id="feedback"><a id="feed" href="https://docs.google.com/forms/d/1OpN7hElo6EdSj58WKvQHX-D-rkaSqQ5xIH1ISk2Nz3M/edit?ts=5e39ab22" target="_blank">Feedback</a> </div></div></span>';
             //var nodes = template.content.childNodes;
             //for (var i = 0; i < nodes.length; i++) {
             document.body.appendChild(template.content.firstChild);
@@ -127,93 +127,121 @@ if (isCasePage) {
 
             };
 
-            mudStatus = () => {
-                let count = 0;
-                imp.addEventListener('click', (event) => {
-                    count++;
-                    imp.src = buttons.implemented.states.active
+        mudStatus = () => {
+            let count = 0;
+            imp.addEventListener('click', (event) => {
+                if (inpro.src != buttons.inprogress.states.inactive){
+                    count= 0;
+                }   else if (attempt.src != buttons.attemptContact.states.inactive){
+                    count= 0;
+                }   else if (inactive.src != buttons.inactive.states.inactive){
+                    count= 0;
+                }   
+                count++;
+                imp.src = buttons.implemented.states.active
+                inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                if (count % 2 == 0) {
+                    imp.src = buttons.implemented.states.education
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
-                    if (count % 2 == 0) {
-                        imp.src = buttons.implemented.states.education
-                        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
-                        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
-                        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
 
-                        educatiOnly = 1;
+                    educatiOnly = 1;
 
-                    }
-                    else {
-                        educatiOnly = 0;
-                    }
+                }
+                else {
+                    educatiOnly = 0;
+                }
 
-                    Status = 1;
-
-                    if (count > 2) {
-                        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
-                        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
-                        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
-                        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
-                        buttons.Status
-                        count = 0
-                        Status = 0
-                    }
-
-                    comments(Status);
-                    prints(Status);
-                });
-                inpro.addEventListener('click', (event) => {
-                    count++;
-                    inpro.src = buttons.inprogress.states.active
+                Status = 1;
+                
+                if(count > 2){
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
                     attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
-                    if (count % 2 == 0) {
-                        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
-                        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
-                        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
-                        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                    buttons.Status
+                    count = 0
+                    Status = 0
+                }
+                
+             comments(Status);
+             prints(Status);
+            });
+            inpro.addEventListener('click', (event) => {
+                if (imp.src != buttons.implemented.states.inactive){
+                    count= 0;
+                }   else if (attempt.src != buttons.attemptContact.states.inactive){
+                    count= 0;
+                }   else if (inactive.src != buttons.inactive.states.inactive){
+                    count= 0;
+                }   
+                count++;
+                inpro.src = buttons.inprogress.states.active
+                imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                if (count % 2 == 0) {
+                    inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                    imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
 
-                        Status = 0
-                    }
+                    Status = 0
+                }
 
-                    Status = 2;
-                });
-                attempt.addEventListener('click', (event) => {
-                    count++;
-                    attempt.src = buttons.attemptContact.states.active
+                Status = 2;
+            });
+            attempt.addEventListener('click', (event) => {
+                if (imp.src != buttons.implemented.states.inactive){
+                    count= 0;
+                }   else if (inpro.src != buttons.inprogress.states.inactive){
+                    count= 0;
+                }   else if (inactive.src != buttons.inactive.states.inactive){
+                    count= 0;
+                }
+                count++;
+                attempt.src = buttons.attemptContact.states.active
+                inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
+                imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                if (count % 2 == 0) {
+                    attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
-                    if (count % 2 == 0) {
-                        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
-                        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
-                        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
-                        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
 
-                        Status = 0
-                    }
+                    Status = 0
+                }
 
-                    Status = 3;
-                });
-                inactive.addEventListener('click', (event) => {
-                    count++;
-                    inactive.src = buttons.inactive.states.active
+                Status = 3;
+            });
+            inactive.addEventListener('click', (event) => {
+                if (imp.src != buttons.implemented.states.inactive){
+                    count= 0;
+                }   else if (attempt.src != buttons.attemptContact.states.inactive){
+                    count= 0;
+                }   else if (inpro.src != buttons.inprogress.states.inactive){
+                    count= 0;
+                }
+                count++;
+                inactive.src = buttons.inactive.states.active
+                imp.src = buttons.implemented.states[buttons.implemented.defaultState]
+                inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
+                attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
+                if (count % 2 == 0) {
+                    inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
                     imp.src = buttons.implemented.states[buttons.implemented.defaultState]
                     inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
                     attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
-                    if (count % 2 == 0) {
-                        inactive.src = buttons.inactive.states[buttons.inactive.defaultState]
-                        imp.src = buttons.implemented.states[buttons.implemented.defaultState]
-                        inpro.src = buttons.inprogress.states[buttons.inprogress.defaultState]
-                        attempt.src = buttons.attemptContact.states[buttons.attemptContact.defaultState]
 
-                        Status = 0
-                    }
+                    Status = 0
+                }
 
-                    Status = 4;
-                });
+                Status = 4;
+            });
                 gtmBtn.addEventListener('click', () => {
                     count++;
                     gtmBtn.src = buttons.tagmanager.states.active
